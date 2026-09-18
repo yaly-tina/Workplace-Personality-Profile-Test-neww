@@ -1,0 +1,1485 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>职场人格图鉴 · 你是孙悟空还是林黛玉</title>
+<style>
+*{box-sizing:border-box;-webkit-tap-highlight-color:transparent}
+html,body{margin:0;padding:0}
+:root{
+  --c1:#b83a2e;--c2:#c9a227;--c3:#d9543f;--c4:#8c6d1f;--c5:#e07b54;
+  --ink:#3b2a1c;--sub:#8a7660;--line:#eadfc8;
+  --glass:rgba(255,253,247,.93);
+  --serif:Georgia,"Noto Serif SC","Songti SC","STSong","STZhongsong","SimSun",serif;
+}
+body{
+  font-family:"PingFang SC","Microsoft YaHei","Hiragino Sans GB",system-ui,-apple-system,sans-serif;
+  color:var(--ink);
+  background:#f5eedd;
+  background-image:
+    radial-gradient(1150px 560px at 8% -8%,#fdf8ec 0%,transparent 60%),
+    radial-gradient(950px 540px at 108% 6%,#f2e4c6 0%,transparent 55%),
+    radial-gradient(900px 620px at 50% 118%,#eedebf 0%,transparent 60%),
+    repeating-linear-gradient(45deg,rgba(166,124,52,.016) 0 2px,transparent 2px 9px);
+  min-height:100vh;overflow-x:hidden;
+}
+.wrap{max-width:700px;margin:0 auto;padding:16px 15px 64px}
+
+/* ===== 通用 ===== */
+.card{background:var(--glass);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);
+  border:1px solid #f0e5cd;border-radius:24px;
+  box-shadow:0 22px 56px -26px rgba(122,86,34,.28),0 2px 6px rgba(122,86,34,.05);
+  padding:24px 20px;margin-bottom:14px;position:relative;overflow:hidden}
+.btn{display:block;width:100%;border:none;border-radius:18px;cursor:pointer;padding:16px 18px;
+  font-size:17px;font-weight:800;color:#fff;letter-spacing:.6px;font-family:inherit;
+  background:linear-gradient(120deg,#c14a33,#a92c1f 60%,#8c6d1f);
+  box-shadow:0 16px 34px -14px rgba(169,44,31,.65);transition:transform .12s,box-shadow .2s}
+.btn:active{transform:translateY(1px) scale(.995)}
+.btn.ghost{background:#fffdf6;color:#a92c1f;border:1.5px solid #e6d3ae;box-shadow:0 10px 24px -16px rgba(122,86,34,.45)}
+.btn.sm{padding:13px 14px;font-size:15px;border-radius:15px}
+.chip{display:inline-block;font-size:12px;font-weight:800;padding:5px 11px;border-radius:999px;letter-spacing:.5px}
+
+/* ===== 封面 ===== */
+.hero{border-radius:30px;padding:38px 24px 32px;color:var(--ink);position:relative;overflow:hidden;
+  background:linear-gradient(150deg,#fdf8ea 0%,#f8efd9 55%,#f3e5c4 100%);
+  border:1px solid #eee0bf;
+  box-shadow:0 30px 70px -32px rgba(122,86,34,.4);margin-bottom:14px}
+.hero:before{content:"";position:absolute;width:340px;height:340px;right:-120px;top:-140px;border-radius:50%;
+  background:radial-gradient(circle,rgba(201,162,39,.20),transparent 65%)}
+.hero:after{content:"";position:absolute;width:280px;height:280px;left:-90px;bottom:-150px;border-radius:50%;
+  background:radial-gradient(circle,rgba(184,58,46,.13),transparent 65%)}
+.hero>*{position:relative;z-index:3}
+.hero .kick{font-size:12px;letter-spacing:5px;color:#b83a2e;font-weight:800}
+.hero h1{margin:10px 0 12px;font-size:36px;line-height:1.24;font-weight:900;letter-spacing:2px;font-family:var(--serif);color:#332414}
+.hero h1 em{font-style:normal;background:linear-gradient(100deg,#b83a2e,#c9a227);-webkit-background-clip:text;background-clip:text;color:transparent}
+.hero .sub{font-size:14.5px;line-height:1.9;color:#7a654a}
+.hero .btn{margin-top:22px;background:linear-gradient(120deg,#c14a33,#a92c1f);color:#fff;box-shadow:0 18px 38px -16px rgba(169,44,31,.6)}
+.hero .hint{font-size:12px;color:#a08b6e;margin-top:13px;letter-spacing:.3px}
+.heroart{position:absolute;right:-14px;bottom:-10px;width:190px;opacity:.6;z-index:2}
+
+.badges{display:flex;gap:7px;flex-wrap:wrap;margin:18px 0 0}
+.badge{background:rgba(255,253,246,.85);border:1px solid #e8d8b2;color:#8c6d1f;
+  padding:6px 12px;border-radius:999px;font-size:12px;font-weight:700}
+
+/* ===== 进度 ===== */
+.prow{display:flex;align-items:center;gap:12px;margin:2px 2px 12px}
+.pbar{flex:1;height:9px;border-radius:99px;background:#ece0c6;overflow:hidden;box-shadow:inset 0 1px 2px rgba(122,86,34,.12)}
+.pbar i{display:block;height:100%;width:0;border-radius:99px;
+  background:linear-gradient(90deg,#c14a33,#c9a227);transition:width .4s cubic-bezier(.4,0,.2,1)}
+.pnum{font-size:12.5px;color:#8a7660;font-weight:800;white-space:nowrap;letter-spacing:.5px}
+
+/* ===== 题目 ===== */
+.qcard{position:relative}
+.qwater{position:absolute;right:14px;top:6px;font-size:74px;font-weight:900;font-family:var(--serif);color:rgba(169,44,31,.06);line-height:1;letter-spacing:-2px;pointer-events:none}
+.qtag{display:inline-block;font-size:11px;font-weight:800;letter-spacing:2.5px;color:#a92c1f;
+  background:#f9e9df;border-radius:7px;padding:5px 10px;margin-bottom:12px}
+.qtext{font-size:20.5px;font-weight:800;line-height:1.55;margin:0 0 20px;letter-spacing:.3px;position:relative}
+.opt{display:flex;gap:12px;align-items:flex-start;text-align:left;width:100%;position:relative;overflow:hidden;
+  background:#fffdf7;border:1.5px solid var(--line);border-radius:17px;padding:15px 16px;margin-bottom:10px;
+  cursor:pointer;font-size:15.5px;line-height:1.62;color:#4a3a28;font-family:inherit;
+  transition:border-color .18s,transform .1s,box-shadow .2s,background .18s}
+.opt:before{content:"";position:absolute;left:0;top:0;bottom:0;width:3px;background:linear-gradient(180deg,#c14a33,#c9a227);
+  transform:scaleY(0);transform-origin:center;transition:transform .22s}
+.opt:hover{border-color:#dfc290;box-shadow:0 10px 24px -14px rgba(169,44,31,.4)}
+.opt:hover:before{transform:scaleY(1)}
+.opt:active{transform:scale(.99)}
+.opt .k{flex:none;width:26px;height:26px;border-radius:9px;background:#f8efe0;color:#a92c1f;
+  font-weight:900;font-size:13.5px;display:flex;align-items:center;justify-content:center;margin-top:1px}
+.opt.on{border-color:#b83a2e;background:#fdf3ef;box-shadow:0 12px 28px -16px rgba(169,44,31,.55)}
+.opt.on:before{transform:scaleY(1)}
+.opt.on .k{background:linear-gradient(135deg,#c14a33,#8c6d1f);color:#fff}
+.rise{animation:rise .42s cubic-bezier(.2,.85,.25,1) both}
+@keyframes rise{from{opacity:0;transform:translateY(16px)}to{opacity:1;transform:none}}
+
+/* ===== 结果 ===== */
+.rhero{border-radius:28px;padding:28px 22px 26px;color:var(--ink);position:relative;overflow:hidden;margin-bottom:14px;text-align:center;
+  background:linear-gradient(160deg,#fdf8ec 0%,#f7edd6 60%,#f2e3c2 100%);
+  border:1px solid #eee0bf;
+  box-shadow:0 30px 66px -30px rgba(122,86,34,.4)}
+.rhero:before{content:"";position:absolute;width:320px;height:320px;right:-130px;top:-150px;border-radius:50%;
+  background:radial-gradient(circle,rgba(201,162,39,.18),transparent 65%)}
+.rhero>*{position:relative;z-index:3}
+.rreport{display:inline-block;background:linear-gradient(120deg,#c14a33,#a92c1f);color:#fff;font-size:12.5px;font-weight:800;
+  letter-spacing:3px;padding:8px 20px;border-radius:999px;box-shadow:0 10px 22px -10px rgba(169,44,31,.7)}
+.rhero h2{margin:16px 0 8px;font-size:44px;letter-spacing:8px;font-weight:900;line-height:1.1;font-family:var(--serif);color:#2f2110}
+.rhero .tag{font-size:14px;font-weight:800;color:#a8842c;letter-spacing:1.5px;line-height:1.7}
+.avawrap{width:236px;height:236px;border-radius:24px;overflow:hidden;margin:20px auto 0;
+  border:6px solid #fff;box-shadow:0 20px 46px -18px rgba(122,86,34,.5);background:#fdf8ec}
+.avawrap svg{display:block;width:100%;height:100%}
+.avawrap img{display:block;width:100%;height:100%;object-fit:cover}
+.rone{margin:20px auto 0;max-width:520px;background:rgba(255,253,246,.8);border:1px solid #efe2c4;
+  border-radius:16px;padding:13px 16px;font-size:14.5px;line-height:1.9;color:#5c4930}
+.rchips{display:flex;gap:7px;flex-wrap:wrap;justify-content:center;padding:15px 0 0}
+.rchips .chip{background:rgba(255,253,246,.9);border:1px solid #e8d8b2;color:#8c6d1f}
+
+h3.sec{font-size:18px;margin:0 0 14px;display:flex;align-items:center;gap:9px;letter-spacing:1px;font-weight:900;font-family:var(--serif);color:#332414}
+h3.sec:before{content:"";width:5px;height:19px;border-radius:3px;background:linear-gradient(180deg,#c14a33,#c9a227)}
+h3.sec span{font-size:12px;color:#a08b6e;font-weight:500;letter-spacing:0;font-family:"PingFang SC","Microsoft YaHei",sans-serif}
+.read{font-size:14.6px;line-height:2.05;color:#4a3a28}
+.read p{margin:0 0 12px}
+.read b{color:#a92c1f}
+
+.grid2{display:grid;grid-template-columns:1fr 1fr;gap:11px}
+.box{border-radius:17px;padding:15px 16px;font-size:13.8px;line-height:1.8}
+.box.up{background:linear-gradient(160deg,#faf4e2,#f6ecd4);border:1px solid #e6d4a4;color:#7a5c16}
+.box.down{background:linear-gradient(160deg,#fdf1ec,#fbe7de);border:1px solid #f0cdba;color:#a03a28}
+.box h4{margin:0 0 6px;font-size:14px;letter-spacing:.5px}
+
+.trick{border:1px solid #eee1c4;border-radius:19px;padding:16px 17px 15px;margin-bottom:12px;background:#fffdf7;
+  box-shadow:0 12px 30px -22px rgba(122,86,34,.6);position:relative;overflow:hidden}
+.trick:before{content:"";position:absolute;left:0;top:0;bottom:0;width:4px;
+  background:linear-gradient(180deg,#c14a33,#c9a227)}
+.tn{display:inline-flex;align-items:center;gap:7px;background:linear-gradient(120deg,#7c2417,#a92c1f);
+  color:#fff;font-weight:800;font-size:14px;padding:6px 13px;border-radius:10px;letter-spacing:1px}
+.tn i{font-style:normal;font-size:11px;opacity:.65;font-weight:700}
+.trick .quote{margin:12px 0 9px;font-size:14px;color:#5c4930;background:#faf3e2;
+  border-left:3px solid #d9c48a;padding:9px 13px;border-radius:0 9px 9px 0;line-height:1.75}
+.trick .desc{font-size:14.2px;line-height:1.95;color:#4a3a28}
+.trick .desc b{color:#a92c1f}
+.sig{margin-top:10px;font-size:12.6px;color:#9a6b1d;background:#fdf7e7;border:1px dashed #ddb96a;
+  border-radius:10px;padding:8px 11px;line-height:1.7}
+.sig b{color:#7a5212}
+
+.cnt{display:flex;gap:11px;margin-bottom:12px;align-items:flex-start}
+.cnt .no{flex:none;width:25px;height:25px;border-radius:9px;color:#fff;font-size:13px;font-weight:900;
+  display:flex;align-items:center;justify-content:center;margin-top:2px;
+  background:linear-gradient(135deg,#c14a33,#8c6d1f)}
+.cnt .tx{font-size:14.2px;line-height:1.9;color:#4a3a28}
+.cnt .tx b{color:#a92c1f}
+
+/* 锦囊 */
+.tips{display:grid;gap:11px}
+.tip{border:1.5px dashed #d9b96a;border-radius:18px;padding:15px 16px;background:linear-gradient(160deg,#fefaf0,#fdf6e3)}
+.tip .th{display:flex;align-items:center;justify-content:space-between;gap:10px;margin-bottom:9px}
+.tip .tt{font-size:13.5px;font-weight:900;color:#7a5212;letter-spacing:.5px;display:flex;align-items:center;gap:7px}
+.tip .tt:before{content:"";width:16px;height:16px;border-radius:5px;background:linear-gradient(135deg,#c14a33,#c9a227)}
+.tip .cp{flex:none;border:none;cursor:pointer;font-family:inherit;font-size:12px;font-weight:800;
+  padding:6px 12px;border-radius:9px;background:#a92c1f;color:#fff;transition:.18s}
+.tip .cp:active{transform:scale(.95)}
+.tip .say{font-size:14px;line-height:1.9;color:#4f3d1d;background:#fffdf7;border:1px solid #ecd9a8;
+  border-radius:12px;padding:11px 13px}
+.tip .why{margin-top:8px;font-size:12.5px;color:#9a6b1d;line-height:1.75}
+
+.rel{display:grid;grid-template-columns:1fr 1fr;gap:11px}
+.rel div{border-radius:17px;padding:14px 15px;font-size:13.5px;line-height:1.85}
+.rel .good{background:linear-gradient(160deg,#faf4e2,#f6ecd4);border:1px solid #e6d4a4;color:#7a5c16}
+.rel .bad{background:linear-gradient(160deg,#fdf1ec,#fbe7de);border:1px solid #f0cdba;color:#a03a28}
+.rel b{display:block;margin-bottom:5px;font-size:14px}
+
+.quoteBig{margin:4px 0 14px;border-radius:24px;padding:28px 24px;color:#fff;text-align:center;
+  background:linear-gradient(140deg,#6f1f12,#a92c1f 55%,#8c6d1f);
+  font-size:19px;font-weight:900;line-height:1.75;letter-spacing:.6px;position:relative;overflow:hidden;
+  box-shadow:0 24px 50px -24px rgba(111,31,18,.85)}
+.quoteBig:before{content:"";position:absolute;width:200px;height:200px;left:-70px;top:-90px;border-radius:50%;
+  background:radial-gradient(circle,rgba(201,162,39,.35),transparent 65%)}
+.quoteBig small{position:relative;display:block;margin-top:11px;font-size:12.5px;font-weight:500;opacity:.75;letter-spacing:0}
+
+.bar{display:flex;align-items:center;gap:10px;margin-bottom:9px;font-size:13.5px}
+.bar .nm{width:60px;flex:none;color:#5c4930;font-weight:800}
+.bar .ln{flex:1;height:9px;border-radius:99px;background:#f0e6cd;overflow:hidden}
+.bar .ln i{display:block;height:100%;border-radius:99px;background:linear-gradient(90deg,#c14a33,#c9a227);width:0;transition:width .9s cubic-bezier(.2,.85,.25,1)}
+.bar .vl{width:32px;flex:none;text-align:right;color:#8a7660;font-variant-numeric:tabular-nums;font-weight:700}
+.mix{display:flex;align-items:center;gap:10px;margin-bottom:10px;font-size:14px}
+.mix .nm{width:76px;flex:none;font-weight:900;color:#3b2a1c}
+.mix .ln{flex:1;height:13px;border-radius:99px;background:#f0e6cd;overflow:hidden}
+.mix .ln i{display:block;height:100%;border-radius:99px;background:linear-gradient(90deg,#c14a33,#c9a227);width:0;transition:width 1s cubic-bezier(.2,.85,.25,1)}
+.mix .vl{width:44px;flex:none;text-align:right;color:#8a7660;font-weight:800;font-variant-numeric:tabular-nums}
+.radarwrap{display:flex;gap:16px;align-items:center;flex-wrap:wrap;justify-content:center}
+.legend{font-size:12.8px;color:#8a7660;line-height:2.05;min-width:160px;flex:1}
+
+.lib-item{display:flex;gap:13px;align-items:center;border:1px solid #eee1c4;border-radius:18px;
+  padding:12px 14px;margin-bottom:10px;background:#fffdf7}
+.lib-item .li{flex:none;width:54px;height:54px;border-radius:15px;overflow:hidden}
+.lib-item .li svg{display:block;width:100%;height:100%}
+.lib-item .li img{display:block;width:100%;height:100%;object-fit:cover}
+.lib-item .n{font-size:16.5px;font-weight:900;letter-spacing:1px;font-family:var(--serif)}
+.lib-item .t{font-size:12.5px;color:#a92c1f;font-weight:800;margin:2px 0 4px}
+.lib-item .d{font-size:12.8px;color:#8a7660;line-height:1.7}
+
+.foot{text-align:center;font-size:12px;color:#a5947a;margin-top:20px;line-height:1.95}
+.hide{display:none!important}
+.loader{text-align:center;padding:64px 20px}
+.spin{width:48px;height:48px;border-radius:50%;border:4px solid #ecdcb8;border-top-color:#a92c1f;
+  margin:0 auto 20px;animation:sp .8s linear infinite}
+@keyframes sp{to{transform:rotate(360deg)}}
+.toast{position:fixed;left:50%;bottom:32px;transform:translateX(-50%) translateY(18px);background:#3b2a1c;
+  color:#fff;padding:12px 22px;border-radius:14px;font-size:14px;opacity:0;pointer-events:none;
+  transition:.3s;z-index:99;box-shadow:0 14px 34px -12px rgba(0,0,0,.6)}
+.toast.show{opacity:1;transform:translateX(-50%)}
+.actions{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+@media(max-width:420px){
+  .hero h1{font-size:30px}.rhero h2{font-size:36px;letter-spacing:5px}.avawrap{width:190px;height:190px}
+  .grid2,.rel{grid-template-columns:1fr}
+}
+</style>
+<script src="hashes.js"></script>
+<script src="guard.js"></script>
+<style>
+.trialbar{display:flex;align-items:center;justify-content:center;gap:7px;font-size:12px;font-weight:800;
+  color:#b45309;background:linear-gradient(100deg,#fef3c7,#fde68a);border:1px solid #fcd34d;
+  border-radius:999px;padding:7px 14px;margin:0 auto 15px;width:fit-content}
+.zywall{position:fixed;inset:0;z-index:200;display:flex;align-items:center;justify-content:center;
+  padding:16px;background:rgba(8,20,38,.62);backdrop-filter:blur(7px);overflow-y:auto}
+.zybox{width:100%;max-width:420px;background:#fff;border-radius:24px;padding:24px 20px 20px;
+  box-shadow:0 30px 70px rgba(0,0,0,.36);text-align:center;position:relative;animation:zypop .32s cubic-bezier(.2,1.2,.3,1)}
+@keyframes zypop{from{opacity:0;transform:translateY(24px) scale(.96)}to{opacity:1;transform:none}}
+.zyclose{position:absolute;right:13px;top:11px;width:28px;height:28px;border-radius:50%;background:#f1f5f9;
+  color:#64748b;font-size:19px;line-height:26px;cursor:pointer;font-weight:400}
+.zyava{width:150px;height:150px;margin:6px auto 10px;border-radius:24px;overflow:hidden;border:5px solid #fff;
+  box-shadow:0 10px 26px rgba(15,42,74,.2);background:#f8fbff}
+.zytag{font-size:11.5px;letter-spacing:2px;color:#94a3b8;font-weight:800}
+.zyname{font-size:30px;font-weight:900;letter-spacing:4px;margin:3px 0 5px;font-family:Georgia,"Noto Serif SC","Songti SC","SimSun",serif}
+.zyone{font-size:13.5px;color:#475569;line-height:1.75;padding:0 6px}
+.zyconf{display:inline-block;font-size:11.5px;font-weight:700;color:#b45309;background:#fffbeb;
+  border:1px solid #fde68a;border-radius:999px;padding:4px 11px;margin:11px 0 15px}
+.zylist{text-align:left;border-top:1px dashed #e2ecf6;padding-top:13px;margin-bottom:15px}
+.zyrow{display:flex;align-items:center;gap:9px;padding:8px 2px;border-bottom:1px solid #f1f5f9}
+.zyrow:last-child{border-bottom:0}
+.zyrow b{font-size:13.5px;flex:0 0 92px}
+.zyrow span{font-size:11.8px;color:#7d93aa;line-height:1.6;flex:1}
+.zyrow i{flex:0 0 auto;font-size:10.5px;font-style:normal;font-weight:800;color:#94a3b8;background:#f1f5f9;
+  border-radius:6px;padding:3px 7px}
+.zycode{width:100%;font-family:ui-monospace,Consolas,monospace;font-size:17px;font-weight:800;letter-spacing:2.4px;
+  text-align:center;text-transform:uppercase;padding:13px 8px;border-radius:14px;border:1.5px solid #cfe0f2;
+  outline:none;margin-bottom:9px}
+.zycode:focus{border-color:#c14a33;box-shadow:0 0 0 4px rgba(193,74,51,.14)}
+.zybtn{width:100%;border:0;border-radius:14px;padding:14px;font-size:15.5px;font-weight:800;font-family:inherit;
+  cursor:pointer;background:linear-gradient(100deg,#c14a33,#a92c1f);color:#fff;box-shadow:0 9px 22px rgba(169,44,31,.36)}
+.zybtn2{width:100%;border:0;border-radius:14px;padding:12px;font-size:14px;font-weight:800;font-family:inherit;
+  cursor:pointer;background:#f1f5f9;color:#334155;margin-top:9px}
+.zymsg{font-size:12.5px;margin-top:9px;min-height:18px;font-weight:700}
+.zymsg.ok{color:#059669}.zymsg.err{color:#e11d48}
+.zysmall{font-size:11.5px;color:#94a3b8;line-height:1.8;margin-top:11px}
+</style>
+<script>
+(function(){
+  var demo=/[?&]demo=1/.test(location.search);
+  if(!ZY.isUnlocked()&&!demo){location.replace('index.html');return;}
+  if(ZY.isUnlocked()){document.documentElement.setAttribute('data-zy','ok');}
+})();
+</script>
+</head>
+<body>
+<div class="wrap">
+
+  <section id="s-intro">
+    <div class="hero">
+      <svg class="heroart" viewBox="0 0 200 200" fill="none">
+        <circle cx="100" cy="100" r="78" stroke="rgba(166,124,52,.22)" stroke-width="1.5"/>
+        <circle cx="100" cy="100" r="58" stroke="rgba(166,124,52,.16)" stroke-width="1.5" stroke-dasharray="5 7"/>
+        <path d="M40 100h120M100 40v120" stroke="rgba(166,124,52,.14)" stroke-width="1.5"/>
+        <circle cx="70" cy="76" r="9" fill="rgba(193,74,51,.35)"/>
+        <circle cx="128" cy="88" r="6.5" fill="rgba(201,162,39,.5)"/>
+        <circle cx="88" cy="134" r="7.5" fill="rgba(184,58,46,.3)"/>
+        <path d="M70 76L128 88L88 134Z" stroke="rgba(166,124,52,.3)" stroke-width="1.5"/>
+      </svg>
+      <div class="kick">职 场 人 格 图 鉴</div>
+      <h1>职场人格<em>图鉴</em></h1>
+      <div class="sub">你是大闹天宫的孙悟空，<br>还是葬花自怜的林黛玉？</div>
+      <div class="badges">
+        <span class="badge">24 道情境题</span>
+        <span class="badge">9 型人格</span>
+        <span class="badge">27 套驭人术拆解</span>
+        <span class="badge">可直接抄的话术</span>
+      </div>
+      <button class="btn" onclick="startQuiz()">开始测一测</button>
+      <div class="hint">不只是娱乐 · 附赠一份「谁在拿捏你」说明书</div>
+    </div>
+
+    <div class="card">
+      <h3 class="sec">五个维度 <span>决定你在职场被如何使用</span></h3>
+      <div style="font-size:14.2px;line-height:2.15;color:#4a3a28">
+        <b style="color:#a92c1f">战力</b>　把事做成的硬能力<br>
+        <b style="color:#a92c1f">锋芒</b>　表达欲与攻击性<br>
+        <b style="color:#a92c1f">心术</b>　看人、布局、留痕<br>
+        <b style="color:#a92c1f">心软</b>　共情力与被绑架指数<br>
+        <b style="color:#a92c1f">定力</b>　情绪稳定与抗压阈值
+      </div>
+      <div style="margin-top:14px;font-size:13px;color:#a08b6e;line-height:1.85;border-top:1px dashed #e6d8ba;padding-top:13px">
+        同样的一份能力，在不同人手里会被兑换成完全不同的东西。<br>这份测试想让你看清的，是<b style="color:#a92c1f">你被兑换的汇率</b>。
+      </div>
+    </div>
+    <div class="foot">本测试仅供娱乐与自我觉察，不构成任何人事决策依据。</div>
+  </section>
+
+  <section id="s-quiz" class="hide">
+    <div class="prow">
+      <div class="pbar"><i id="pbar"></i></div>
+      <div class="pnum" id="pnum">1 / 24</div>
+    </div>
+    <div class="card qcard" id="qcard">
+      <div class="qwater" id="qwater">01</div>
+      <div class="qtag" id="qtag">接活时刻</div>
+      <h2 class="qtext" id="qtext"></h2>
+      <div id="opts"></div>
+    </div>
+    <div style="margin-top:6px"><button class="btn ghost sm" onclick="prevQ()" id="btnPrev">上一题</button></div>
+  </section>
+
+  <section id="s-load" class="hide">
+    <div class="card loader">
+      <div class="spin"></div>
+      <div style="font-size:16.5px;font-weight:900;letter-spacing:.6px">正在比对 9 种人格原型…</div>
+      <div style="font-size:13px;color:#a08b6e;margin-top:9px" id="loadtx">拆解你的驭人术弱点</div>
+    </div>
+  </section>
+
+  <section id="s-result" class="hide">
+    <div class="rhero" id="rhero">
+      <div class="rreport">你的职场人格报告</div>
+      <h2 id="rname"></h2>
+      <div class="tag" id="rtag"></div>
+      <div class="avawrap" id="rava"></div>
+      <div class="rone" id="rone"></div>
+      <div class="rchips" id="rchips"></div>
+    </div>
+
+    <div class="card">
+      <h3 class="sec">深度解析 <span>你到底是怎么被使用的</span></h3>
+      <div class="read" id="rread"></div>
+    </div>
+
+    <div class="card">
+      <h3 class="sec">你的人格成分 <span>没有人是单一型</span></h3>
+      <div id="mix"></div>
+    </div>
+
+    <div class="card">
+      <h3 class="sec">五维画像 <span>能力结构与软肋</span></h3>
+      <div class="radarwrap">
+        <svg id="radar" width="250" height="240" viewBox="0 0 250 240"></svg>
+        <div class="legend" id="legend"></div>
+      </div>
+    </div>
+
+    <div class="card">
+      <h3 class="sec">你的超能力与死穴</h3>
+      <div class="grid2">
+        <div class="box up"><h4>超能力</h4><div id="rsuper"></div></div>
+        <div class="box down"><h4>死穴</h4><div id="rweak"></div></div>
+      </div>
+    </div>
+
+    <div class="card">
+      <h3 class="sec">职场驭人术揭秘 <span>谁在拿捏你，怎么拿捏的</span></h3>
+      <div id="tricks"></div>
+    </div>
+
+    <div class="card">
+      <h3 class="sec">反制手册 <span>把主动权拿回来</span></h3>
+      <div id="counters"></div>
+    </div>
+
+    <div class="card">
+      <h3 class="sec">锦囊妙计 <span>三句话，明天就能用</span></h3>
+      <div class="tips" id="tips"></div>
+    </div>
+
+    <div class="card">
+      <h3 class="sec">相生相克 <span>跟谁组队，躲着谁</span></h3>
+      <div class="rel">
+        <div class="good"><b>最佳搭档</b><span id="rally"></span></div>
+        <div class="bad"><b>最需提防</b><span id="rdanger"></span></div>
+      </div>
+    </div>
+
+    <div class="quoteBig" id="rquote"></div>
+
+    <div class="actions">
+      <button class="btn ghost sm" onclick="copyResult()">复制结果文案</button>
+      <button class="btn ghost sm" onclick="saveCard()">保存结果卡片</button>
+      <button class="btn sm" onclick="restart()" style="grid-column:1/3">再测一次</button>
+      <button class="btn ghost sm" onclick="showLib()" style="grid-column:1/3">看看另外 8 种人格</button>
+    </div>
+    <div class="foot">看清规则，是为了不被规则吞掉。</div>
+  </section>
+
+  <section id="s-lib" class="hide">
+    <div class="card">
+      <h3 class="sec">九型人格速查 <span>看懂身边每个人</span></h3>
+      <div id="liblist"></div>
+      <button class="btn sm" style="margin-top:10px" onclick="backResult()">返回我的结果</button>
+    </div>
+  </section>
+
+</div>
+<div class="toast" id="toast"></div>
+<canvas id="cv" class="hide"></canvas>
+
+<script>
+var DIMS=[{k:'power',n:'战力'},{k:'edge',n:'锋芒'},{k:'craft',n:'心术'},{k:'soft',n:'心软'},{k:'calm',n:'定力'}];
+
+var TYPES=[
+{
+ key:'wukong',name:'孙悟空',tag:'齐天大圣型 · 业务天花板，政治地板砖',
+ one:'你是团队里最能打的那个人，也是最容易被打的那个人。所有救火现场都有你，所有晋升名单常常没有你。',
+ orig:{power:9,edge:10,craft:4,soft:3,calm:6},
+ read:['你是那种「事交给你就不用担心」的人。危机时刻，整个公司默认会等你说那句"我来"。这份可靠是你最硬的资产，也是别人向你无限提款的凭证。',
+ '问题在于，<b>你把所有筹码都押在了"把事做成"上</b>，却默认了另一件事：功劳会自己找到主人。它不会。功劳是一种需要主动分配、主动署名、主动复盘的东西，而恰恰是能干的人，最不屑于做这些。',
+ '于是形成了一个稳定结构：你越能打，系统越敢把难活堆给你；你越不争，系统越默认你不需要被补偿。<b>你不是在晋升，你是在被续聘。</b>',
+ '你需要的不是更努力，而是<b>给自己的能力装上计价器</b>。同样是"我来"，带一句对价，性质就从免费额度变成了明码标价。'],
+ sup:'把"不可能"变成"已交付"。危机时刻，全公司都默认等你说那句"我来"。',
+ weak:'太相信"干出来就行"，忘了功劳是需要被分配、被署名、被复盘的。',
+ tricks:[
+  {n:'能者多劳陷阱',q:'"这个非你不可啊，换别人我不放心。"',
+   d:'把难活、烂活、没人接的活，统一命名为<b>"只有你能干"</b>。你的能力被当成一张没有额度的信用卡，刷的人从来不用还。更狠的是：它把"不公平的分配"包装成了"对你的认可"。',
+   s:'当你第三次听到"非你不可"，你就已经不是在做选择，而是在被安排。'},
+  {n:'紧箍咒式授权',q:'"你看着办，我全力支持你。"（支持＝口头）',
+   d:'给责任，不给资源；给目标，不给人；给舞台，不给权限。<b>办成了是领导有方，办砸了是你执行不力</b>——风险单向流向你，收益双向分配。',
+   s:'只给你"自由度"、不给你"决定权"的授权，都是紧箍咒。'},
+  {n:'捧杀术',q:'"大家都要向××学习，他一个人顶一个团队。"',
+   d:'公开把你夸成标杆，一箭三雕：同事默认"他多干是应该的"，领导觉得"你已经得到荣誉了"，加薪于是可以缓一缓。<b>表扬在这里不是奖励，是封口费。</b>',
+   s:'当表扬取代了回报，夸你的人就已经完成了支付。'},
+  {n:'对标施压术',q:'"上次那个你三天就做完了，这次应该也行吧？"',
+   d:'用你的历史最好成绩，作为你以后的最低标准。你的每一次超额交付，都在<b>抬高别人对你的基线预期</b>，直到正常水平变成"退步"。',
+   s:'你的高光时刻，正在变成你的及格线。'}
+ ],
+ counter:[
+  '<b>接活带对价</b>：接可以，但那 X 项目顺延、或加一个人、或写进本季度目标。把"能干"从免费额度变成明码标价。',
+  '<b>留痕三件套</b>：需求书面确认、过程群内同步、结果抄送上级。不为撕逼，只为让功劳自动归位。',
+  '<b>有控制地不接</b>：一年拒三次无关紧要的小活，比拒绝一次大事安全得多——先在小事上训练别人对你的预期。',
+  '<b>管住自己的历史成绩</b>：不要每次都交 120 分。稳定输出 90 分，把 120 分留给真正重要的那两件事。',
+  '<b>每季度做一次"功劳登记"</b>：把做过的事、省下的钱、避免的坑写成一页纸，在绩效季之前主动递上去。'
+ ],
+ tips:[
+  {t:'被塞烂摊子时',s:'可以，我手上现在有 A（周五交付）和 B（下周三）。您看这个插在哪个后面？如果都要，B 我建议延到下下周，我同步给相关方。',w:'把"接不接"换成"排第几"，决策权还给对方，你没有说一个"不"字。'},
+  {t:'被当众表扬时',s:'谢谢。这次能提前两天交付，是因为老王把数据接口提前给了。后面还有两轮压测，我再拉个群同步进度。',w:'把功劳分出去，同时把"还没结束"和"我在推进"留在台面上。'},
+  {t:'被要求压缩工期时',s:'三天可以，但需要砍掉压测环节。如果压测必须做，那我要到下周一。这两个您选一个，我都执行。',w:'永远给两个选项，而不是一个"做不到"。选项里必须包含代价。'}
+ ],
+ ally:'唐僧（他给你方向和正当性，你给他结果）、沙僧（替你兜住所有细节）',
+ danger:'王熙凤。她会欣赏你、使用你，然后在需要平衡局面的时候，第一个牺牲你。',
+ quote:'你的问题从来不是不够强，而是强得太便宜。'
+},
+{
+ key:'daiyu',name:'林黛玉',tag:'葬花型 · 高敏感是高分辨率，不是玻璃心',
+ one:'你能听见别人听不见的潜台词，也承受着别人感受不到的音量。你的雷达很准，只是没有安装输出端口。',
+ orig:{power:7,edge:3,craft:5,soft:9,calm:2},
+ read:['你是团队里最早闻到"这件事要变味"的人。别人还在看方案，你已经从一句语气、一个抄送名单、一次会议的座次里读出了真实意图。<b>这种分辨率是天赋，不是病。</b>',
+ '代价是：你接收到的信号没有出口。你难受、你察觉、你判断，但你不说——因为你找不到一种不会被驳回的表达方式。于是情绪在内部循环，最后变成对自己的消耗。',
+ '更麻烦的是，你的敏感会<b>被别人反向利用</b>。一旦你表达不满，对方只要回一句"你想太多了"，你就从"提出问题的人"变成了"有问题的人"。这是职场上成本最低、效果最好的封口术。',
+ '你真正需要补的，不是"别想那么多"，而是<b>把感受翻译成事实和成本的技术</b>。感受会被驳回，数字不会。'],
+ sup:'细节、审美、共情力远超常人。你能提前三个月闻到一件事要变味。',
+ weak:'把情绪当成事实，把沉默当成解释。难受之后不是沟通，是自己消化到内伤。',
+ tricks:[
+  {n:'情绪价值勒索',q:'"咱们这关系，还用说这些？"',
+   d:'用<b>关系亲密替代权责清晰</b>。一旦你开口谈钱、谈边界、谈署名，就成了"你不够意思"。于是你永远不好意思，而他永远不需要明确。',
+   s:'凡是让你"不好意思提"的东西，通常都是对方最不想给你的东西。'},
+  {n:'玻璃心标签化',q:'"你想太多了，我没那个意思。"',
+   d:'这招的真正作用不是否认事实，而是<b>让你以后自我审查、主动闭嘴</b>。他不需要说服你，只需要让你觉得是自己有问题。标签一贴，从此你所有的不满都自动失效。',
+   s:'当你开始反复解释"我没有敏感"，你就已经输了这一轮。'},
+  {n:'冷处理术',q:'（不批评、不解释、不回应，已读不回）',
+   d:'对别人无关痛痒，对你是酷刑。你会在沉默里自动编出最坏的版本，然后<b>替对方写好台词，再向这个自己编出来的版本认错</b>。全程他一句话都不用说。',
+   s:'沉默不是答案，沉默是一种让你自己动手的手段。'},
+  {n:'公开玩笑式敲打',q:'"咱们××就是细腻，开个玩笑都当真。"',
+   d:'在众人面前把你的敏感变成一个笑点。表面上气氛轻松，实质是<b>当众宣布：你的感受在这个场子里不作数</b>。从此你再开口，大家想到的都是那个玩笑。',
+   s:'把你的特点变成段子，是剥夺它严肃性最快的方式。'}
+ ],
+ counter:[
+  '<b>把感受翻译成事实和成本</b>：不说"我觉得被针对了"，改说"这个需求改了 5 版，额外约 3 人日，需要确认优先级"。情绪会被驳回，数字不会。',
+  '<b>给情绪设闹钟</b>：允许自己难受 20 分钟，时间一到，必须输出一句话——"我需要什么"。感受是信号，不是结论。',
+  '<b>找个外部裁判</b>：找一个不在这条关系链里的人复述事实，只问一句"这正常吗"。你的雷达很准，但需要定期校准。',
+  '<b>拒绝"敏感"这个标签</b>：对方说"你想太多"时，只回一句"我们不说感受，说事实"，然后继续讲你的事实。不辩护，不上钩。',
+  '<b>建立输出端口</b>：每周写一封给自己的邮件，记录三件"我察觉到但没说"的事。写着写着，你会发现哪些该说、哪些真的不必。'],
+ tips:[
+  {t:'被贴"敏感"标签时',s:'我们不说感受，说事实：这个需求本周改了 5 版，累计额外投入约 3 人日。请确认一下优先级，我好排后面的活。',w:'不上钩辩护，直接切回事实。对方越想谈你的态度，你越要谈数字。'},
+  {t:'遭遇冷处理时',s:'我注意到上周的反馈还没收到回复。如果这个方案不通过，我本周四前需要收到明确意见，否则我按原计划推进。',w:'给沉默设一个截止日期。沉默之所以有效，是因为没有期限。'},
+  {t:'被情感绑架加班时',s:'我理解项目紧，但这个周末我已有安排。周一上午九点我可以优先处理，您看这样行吗？',w:'先接住对方的情绪，再给一个明确的替代方案。不解释，不道歉。'}
+ ],
+ ally:'薛宝钗（替你挡住场面上的风）、诸葛亮（把你的敏感变成可执行的方案）',
+ danger:'王熙凤。她能精准读出你的软肋，并且不介意按下去。',
+ quote:'敏感不是缺陷，敏感是没有安装输出端口。'
+},
+{
+ key:'baochai',name:'薛宝钗',tag:'端水大师型 · 滴水不漏的人，最后漏掉的是自己',
+ one:'你让所有人都舒服，唯独让自己长期处于"没人问我想要什么"的状态。你的得体，是别人占你便宜的通行证。',
+ orig:{power:7,edge:2,craft:9,soft:6,calm:8},
+ read:['你有一种罕见的能力：能让一场快要吵起来的会议，在你两句话之后恢复体面。你从不制造麻烦，也从不制造尴尬，人人都说你好相处。',
+ '但这是一种<b>会被系统吃掉的善</b>。因为你从不说不，分配任务时你就是阻力最小的路径；因为你从不计较，分配利益时你就是最安全的省略项。不是有人针对你，是系统在自动寻找最省事的解。',
+ '更隐蔽的是，你的"懂事"被写成了人设。人设一旦成立，<b>你就被禁止改变</b>——哪天你开始争取，所有人都会惊讶："你不是一直不在乎吗？"你被自己的好名声锁死了。',
+ '你需要的不是变强硬，而是<b>让"好说话"变成一种有记录、有回报的付出</b>，而不是一种默认设置。'],
+ sup:'情绪稳定、场面好看、谁都不得罪。团队里所有濒临爆炸的会议，都靠你两句软话接住。',
+ weak:'太好用了，以至于没有人记得你也有诉求。你从不制造麻烦，于是也从不制造筹码。',
+ tricks:[
+  {n:'人设绑架术',q:'"你最懂事了，这个你肯定不介意。"',
+   d:'先给你戴上"最有大局观"的帽子，再在分利益时默认你"不会计较"。<b>表扬在这里不是奖励，是预付的封口费</b>——你已经拿到了名声，就别再要东西了。',
+   s:'每一次"你最懂事"，后面都跟着一件你不想做的事。'},
+  {n:'和稀泥转嫁',q:'"这事你们协调一下，××你来牵头平衡。"',
+   d:'把本该由领导承担的裁决权，"自然"地交给你。结果你<b>既当运动员又当裁判</b>，赢了不落好，输了全背锅。而真正的决策者，从头到尾没有表态。',
+   s:'让你去"平衡"，本质是他不想承担"不平衡"的代价。'},
+  {n:'维稳岗钉死术',q:'"这个位置离了你不行，再顶一顶。"',
+   d:'因为你靠谱，你被永久钉在维稳岗位上：上不去，因为没人能替；走不掉，因为不敢放。<b>"你太重要了"是职场最温柔的锁。</b>',
+   s:'真正的重用会给你更大的地盘，假的重用只会让你守着原地。'},
+  {n:'情绪劳动隐形化',q:'"有你在，团队气氛就是不一样。"',
+   d:'你做的那些看不见的工作——缓和冲突、安抚情绪、缝合关系——<b>因为无法量化，所以在考核时等于不存在</b>。你干得越好，越难以证明自己干了什么。',
+   s:'凡是"说不清楚具体做了什么"的工作，最后都会被算作"没干什么"。'}
+ ],
+ counter:[
+  '<b>温柔的边界要有硬内核</b>：答应时带条件，拒绝时给替代方案。"我可以协调，但最后的决策需要您来拍板，并且发个纪要。"',
+  '<b>每年做一次人设减持</b>：公开表达一次真实的偏好或不满。让"懂事"不再是你唯一的标签，也给你未来的争取留出空间。',
+  '<b>把协调力写进职责</b>：协调能力是硬技能，要写进目标、写进晋升材料，而不是留给别人默认的善良。',
+  '<b>给情绪劳动记账</b>：每周记下"我调解了什么、避免了什么"，这些是你绩效面谈时唯一的弹药。',
+  '<b>主动制造一次不可替</b>：不是让自己更难替代，而是让自己<b>更难被挪动而不被补偿</b>——提前规划交接人选，把"离不了你"变成谈判筹码而不是枷锁。']
+ ,
+ tips:[
+  {t:'被塞协调活时',s:'我可以组织讨论，但最后的决策还得您来拍板。会后我出一版纪要，请您确认，我按这个发。',w:'把"裁决"还回去，把"记录"握在手里。记录权就是解释权。'},
+  {t:'被默认让步时',s:'这次我可以先让，但下一轮的排序，希望把我放在前面。我记一下，下次提醒您。',w:'让步可以，但必须登记。不登记的让步，在别人眼里叫"本来就该"。'},
+  {t:'想跳出维稳岗时',s:'我想争取 XX 方向的机会。为了腾出手，我建议用两个月把 A 流程交接完，接手人选我推荐小陈。',w:'不要抱怨没机会，要主动交出"挡住你的那块砖"。'}
+ ],
+ ally:'孙悟空（你补他的政治短板，他给你硬邦邦的业绩）',
+ danger:'唐僧。他会不断用理想和情怀，消耗你最宝贵的务实与时间。',
+ quote:'不得罪所有人，最后只能得罪自己。'
+},
+{
+ key:'xifeng',name:'王熙凤',tag:'权力操盘手型 · 你在用别人，别人也在用你',
+ one:'你看人极准、下手极快、场面掌控力极强。但你要时刻记得：最锋利的刀，用完第一个被收回鞘。',
+ orig:{power:9,edge:8,craft:10,soft:2,calm:7},
+ read:['你在混乱里三分钟就能重建秩序，你知道谁和谁不对付、谁的话能信、哪件事的钥匙在谁手里。这种能力让你比同龄人更快拿到位置。',
+ '但权力的运作是有方向的。<b>你在使用别人的同时，也正在被更上面的人使用</b>。那些"不方便出面"的事交给你办，成算是执行到位，砸了算是决策失误——而你往往没有意识到，自己接的是哪一类。',
+ '第二个陷阱是稀缺。上级给你制造一个"只有一个名额"的局面，让你和同级去争。<b>这场竞争真正的目的不是选出赢家，而是让你们都变得更听话。</b>',
+ '你最该防的不是明面上的对手，而是那些<b>把舞台给你、把线轴握在自己手里</b>的人。风筝飞得再高，也证明的是放风筝的人。'],
+ sup:'资源整合快、信息灵通、能在混乱里三分钟重建秩序。你是天生的管理者。',
+ weak:'把关系当资产，忘了资产会折旧；把控制当安全，忘了控制会招来更强的控制。',
+ tricks:[
+  {n:'借刀杀人术',q:'"这个事你去处理一下，我不想出面。"',
+   d:'上级不方便出面的脏活，让你去当那把刀。<b>事成了，你是执行者；事砸了，你是决策者。</b>刀上沾的血，永远算刀的。',
+   s:'凡是"我不想出面"的事，都是出面的人要负责的事。'},
+  {n:'二桃杀三士',q:'"今年就一个名额，你们两个我都看好。"',
+   d:'故意制造稀缺，让你和同级去争。争的过程中你们互相消耗、互相提防，<b>领导收获两个更听话的人</b>——这才是真正的目的。名额给谁，反而不重要。',
+   s:'当机会只有一个，先想清楚：是机会真的只有一个，还是有人需要它只有一个。'},
+  {n:'风筝术',q:'"放手干，我只看结果。"',
+   d:'给你足够长的线（授权、荣誉、舞台），但线轴永远在他手里。你飞得越高，越是在证明<b>是他放的风筝</b>。关键时刻收线，你连挣扎的姿态都摆不出来。',
+   s:'只给结果压力、不给资源话语权的授权，都是放风筝。'},
+  {n:'信息喂养术',q:'"这事我只跟你说了，你心里有数就行。"',
+   d:'用独家信息换取你的忠诚与依赖。你以为自己掌握了情报，其实<b>你被塑造成了一个只接收单一信源的人</b>——他喂什么，你就只能信什么。',
+   s:'只从一个渠道获得的信息，不是情报，是投喂。'}
+ ],
+ counter:[
+  '<b>拒绝做唯一的刀</b>：任何得罪人的动作，都要留下"共同决策"的痕迹——会议纪要、邮件抄送、集体决议。刀可以当，但不能一个人握。',
+  '<b>识别稀缺陷阱</b>：当机会只有一个，先问一句"为什么只有一个"。很多时候答案是：为了让你们低头。',
+  '<b>建立横向同盟</b>：把与同级的竞争，改造成互换信息的合作。上面那只手，最怕下面连成一片。',
+  '<b>多信道验证</b>：任何重要信息，至少从两个独立来源确认。单一信源就是别人手里的线。',
+  '<b>留住一样不依赖平台的东西</b>：行业口碑、客户关系、可迁移的方法论。当线被收走的时候，这是你唯一的降落伞。'],
+ tips:[
+  {t:'被当刀使时',s:'这事涉及其他部门，我建议开个短会集体决议，会后我出纪要请大家确认。我一个人定，后面不好推进。',w:'把个人决策变成集体决议，责任就从你身上分散开了。'},
+  {t:'被挑动竞争时',s:'名额的事我跟老李聊过了，我们打算先一起把方案做完，谁上都可以，但项目得成。您看这样是不是更稳？',w:'当场拆掉"二桃"。你不争，这个局就失效了。'},
+  {t:'被要求立刻表态时',s:'我手上的信息还不够判断。给我两天，我出一份对比分析，再一起定。',w:'逼你立刻表态，通常是因为你一旦想清楚就不会答应。'}
+ ],
+ ally:'诸葛亮（唯一能和你做战略级对话的人）、沙僧（把你布的局真正落地）',
+ danger:'孙悟空。他不吃你那套，而且他是真的能打——硬实力是你唯一控不住的变量。',
+ quote:'权力的对手从来不是反抗，而是被需要得太久。'
+},
+{
+ key:'bajie',name:'猪八戒',tag:'摸鱼学大师型 · 你是润滑剂，也是温水里的那只蛙',
+ one:'你是团队的气氛组组长、情绪消防员、下午茶发起人。你让职场没那么难熬，但你要小心：舒服久了，能力会悄悄过期。',
+ orig:{power:4,edge:5,craft:6,soft:7,calm:9},
+ read:['你有一种别人学不来的松弛感。再僵的会议，你一句话就能让大家都笑出来；再大的压力，你睡一觉就过去了。团队里有你，气氛就不会死。',
+ '这份松弛是你的护身符，也是你的<b>慢性风险</b>。职场里，"好说话"和"好欺负"之间只隔着一样东西：你手上有没有别人绕不开的硬技能。有，你是豁达；没有，你是好用。',
+ '更隐蔽的问题是：因为你从不争取，你逐渐<b>从"分蛋糕的名单"里消失了</b>。不是有人排挤你，是大家在分的时候，没人想得起来问你一句。你的产出太难量化，于是约等于没有产出。',
+ '你不需要变成卷王，你需要的是<b>一个别人绕不开的锚点</b>。有了它，你所有的随和才叫性格；没有它，你的随和只叫便宜。'],
+ sup:'抗压、解压、会来事。再僵的局面，你一句话就能让大家都笑出来。',
+ weak:'太容易满足，也太容易被满足。你对"不被打扰"的渴望，正在兑换掉你的议价权。',
+ tricks:[
+  {n:'温水煮青蛙术',q:'"这个岗位清闲、稳定，多少人羡慕不来。"',
+   d:'给你一个体面、清闲、没什么产出的位置，让你在舒适里<b>慢慢失去市场竞争力</b>。等你发现水开了，腿已经软了，跳不动了。',
+   s:'当一个岗位只剩下"稳定"这一个优点时，它通常已经没有别的优点了。'},
+  {n:'角色固化术',q:'"没你我们吃饭都不香，气氛全靠你。"',
+   d:'把你定义为"团队气氛担当"。从此你的价值只剩逗大家开心，<b>正经机会不再经过你</b>——毕竟你"也没干啥"。把一个活人变成一个功能，是最省力的方式。',
+   s:'当你只剩下一个标签，那个标签就是你的天花板。'},
+  {n:'召之即来，分果即忘',q:'（脏活累活想到你，评优晋升想不到你）',
+   d:'因为你随和、不拒绝、好说话，苦差事自动流向你；又因为你的产出难以量化，<b>论功行赏时你自然被跳过</b>。两头都占，两头都不给。',
+   s:'如果你说不出自己今年做成了什么，那评优名单上没有你，就是必然。'},
+  {n:'无害化边缘',q:'"他人挺好的，就是……"',
+   d:'这句没说完的话，是职场最残忍的墓志铭。<b>"人挺好"意味着你没有威胁，也就意味着你没有分量。</b>人们喜欢你，但不会为你争取。',
+   s:'被所有人喜欢，往往等于被所有人忽略。'}
+ ],
+ counter:[
+  '<b>至少握一样硬通货</b>：一项别人绕不开的技能，哪怕只有一个。它是你所有随和的底线，也是你说"不"的底气来源。',
+  '<b>把"好相处"升级成"好合作"</b>：随和＋有交付＝值得合作；随和＋无交付＝好用。区别只在结果，不在态度。',
+  '<b>每年主动要一次不舒服</b>：接一个会暴露你短板的项目。舒服是职场的防腐剂，也是麻醉剂。',
+  '<b>给产出做量化</b>：哪怕是小事，也要能说清"做了什么、省了多少、快了多少"。说不清的功劳，等于没做。',
+  '<b>学会一次认真的不高兴</b>：不用发火，只要在关键时刻明确表态一次。别人会重新校准对你的预期。'],
+ tips:[
+  {t:'想跳出边缘岗时',s:'我想参与 XX 项目。我在数据分析这块补过课，可以先承担其中一块。给我一个季度，做不好我退回原岗。',w:'给对方一个低风险的下注理由：有限时间、有限范围、有退路。'},
+  {t:'被塞杂活时',s:'这个我可以帮，但下午三点前我要交 A。要不四点后，或者找小王？',w:'不拒绝人，只拒绝时间。时间是最不需要解释的理由。'},
+  {t:'评优前为自己说话',s:'今年我完成了 A、B、C 三项，其中 B 提前一周交付、节省约 8 万。材料我整理好了，您看一下。',w:'不要求认可，只提供材料。让对方做判断，而不是做施舍。'}
+ ],
+ ally:'孙悟空（他攻坚，你润滑，天作之合）、唐僧（他给你意义感）',
+ danger:'王熙凤。她会把你的随和当成消耗品，用到不能再用为止。',
+ quote:'你可以不卷，但你不能没有退路。'
+},
+{
+ key:'shaseng',name:'沙僧',tag:'老黄牛型 · 最可靠的人，最容易被"默认"',
+ one:'你从不掉链子，于是所有人都默认你会一直在这里。你的稳定，正在被系统当成不需要维护的基础设施。',
+ orig:{power:6,edge:1,craft:3,soft:8,calm:10},
+ read:['交给你的事，从来不需要追问第二遍。你情绪稳定、不抱怨、不邀功，是所有管理者梦寐以求的"安全感"本身。',
+ '但安全感是有代价的。因为你从不拒绝，系统<b>自动把你设为默认选项</b>——不是你被选中，而是你阻力最小。因为你从不缺席，你的存在变成了背景音，<b>人们只对突然消失的东西有感觉</b>。',
+ '最狠的一招是"不可替代"。你太好用了，所以你必须留在原地。那句"你走了这块谁来接"听起来像表扬，实际上是一把锁：<b>你的可靠，成了你离开的唯一障碍。</b>',
+ '你要做的不是变得 unreliable，而是<b>让你的可靠被看见、被计价、并且可以被交接</b>。只有能被交接的人，才配得上更大的地盘。'],
+ sup:'交付稳定、情绪零噪音、交给你的事永远不用担心。你是所有管理者的"安全感"本身。',
+ weak:'因为从不拒绝，所以从不被询问；因为从不缺席，所以从不被感谢。',
+ tricks:[
+  {n:'责任下沉，功劳上收',q:'（决策时你在执行层，出事时你在责任层，表彰时你在"及全体同事"）',
+   d:'权力和收益向上集中，风险和琐事向下沉淀。<b>你不是在参与，你是在承接。</b>而"及全体同事"这四个字，是最便宜的功劳结算方式。',
+   s:'看看决策会议名单和复盘会名单是不是同一拨人，就知道你在链条的哪一端。'},
+  {n:'默认选项化',q:'"这个给××吧，他从来没说过不。"',
+   d:'不是你被选中，是你被默认。<b>系统会自动把活分配给阻力最小的路径</b>，而你，就是那条最顺的路。你越沉默，路越顺。',
+   s:'你的"从不说不"，正在替所有人做决定。'},
+  {n:'不可替代＝不许升迁',q:'"你走了，这块谁来接？再等等吧。"',
+   d:'这句话听起来像表扬，其实是锁。你越好用，越必须留在原地。<b>你的可靠，成了你离开的障碍</b>，而这句话还把你锁得心服口服。',
+   s:'真正的提拔会帮你找接班人；不想提拔你的人，才会强调"没人能替你"。'},
+  {n:'沉默美德化',q:'"××就是这样，从来不争不抢。"',
+   d:'把你的不争包装成美德，从而<b>让"不给你"变得理直气壮</b>。你要是争了，反而破坏了自己的人设——这是一种极其精巧的软性压制。',
+   s:'当"不争"被当成你的优点，它就再也不会是给你的理由。'}
+ ],
+ counter:[
+  '<b>条件性答应</b>：不说"不"，说"可以，但我手上的 A 和 B，您看哪个往后排？"把优先级决策还给对方，也让你的负荷被看见。',
+  '<b>主动制造可替代性</b>：流程写文档、技能带一个人。"我走了没人能干"是加薪的理由，也是升迁的死路——你必须先解开这把锁。',
+  '<b>每季度一次可见度汇报</b>：你不说，没人知道你这些年扛了多少。稳定，从来不是沉默的理由。',
+  '<b>把琐事打包成项目</b>：零散的保障工作要主动命名、主动立项、主动汇报。有了名字，才有预算和功劳。',
+  '<b>练一次"说出来"</b>：不用吵，只需在关键分配时说一句"这次我想负责 X"。第一次最难，之后会越来越顺。'],
+ tips:[
+  {t:'被无止境加活时',s:'可以。我手上现在有 A、B、C 三项，您看这个排在哪个后面？我按您定的顺序推进。',w:'把负荷显性化。让对方看见总量，比说"我忙不过来"有效十倍。'},
+  {t:'谈晋升被"没人接"卡住时',s:'为了能接新职责，我打算两个月内把现有流程文档化，并带小陈跑两轮。交接完成我就有空了。',w:'把"再等等"变成"有排期的计划"，主动权就回到你手上。'},
+  {t:'要可见度时',s:'本周完成 5 项常规保障，处理 3 次线上异常，平均响应 15 分钟。明细我列在周报里，需要的话我可以展开。',w:'稳定的价值必须用数字说出来，否则它就是空气。'}
+ ],
+ ally:'猪八戒（他会替你把功劳说出来）、唐僧（他会记得你的付出）',
+ danger:'王熙凤。她最擅长把"可靠"翻译成"可以继续加压"。',
+ quote:'从不掉链子的人，最后会被当成链子本身。'
+},
+{
+ key:'tangseng',name:'唐僧',tag:'布道者型 · 你讲得出愿景，却常常拿不到资源',
+ one:'你能让一群人相信一件事值得做，这是稀缺的天赋。但你也要小心：没有资源配套的愿景，本质上只是一份加班通知。',
+ orig:{power:4,edge:6,craft:5,soft:7,calm:5},
+ read:['你能把枯燥的 KPI 讲成一场远征，能让一群疲惫的人重新相信"这件事有意义"。这是非常稀缺的能力——大多数管理者只会分活，不会给意义。',
+ '危险在于，<b>你容易被自己的叙事说服</b>。你把"讲清楚了"当成"做完了"，把"大家认同了"当成"资源到位了"。于是你带着一支被感动的队伍，去打一场没有补给的仗。',
+ '而上面的人很清楚这一点。他们知道，<b>意义是职场上最便宜的支付方式</b>：零成本、无限量供应、还能让你自己感动。你一谈条件，他们就把话题升到格局、情怀、忠诚度——把利益之争偷换成忠诚之争，你一开口就先输了立场。',
+ '你需要补的不是信念，而是<b>把愿景翻译成排期、预算和人头的技术</b>。真正的理想主义者，都很会算账。'],
+ sup:'凝聚人心、定义意义、把枯燥的 KPI 讲成一场远征。你是团队的"为什么"。',
+ weak:'把"相信"当成"已经发生"，把"讲清楚了"当成"做完了"。',
+ tricks:[
+  {n:'画饼术',q:'"等这轮融资到位／等上市之后，兄弟们都有。"',
+   d:'核心逻辑是<b>用未来收益支付现在的劳动</b>。饼的精妙之处在于：它从不需要兑现，只需要不断更新版本。旧饼过期了，新饼就来了。',
+   s:'凡是"等……之后"开头的承诺，先问那个"之后"具体是哪一天。'},
+  {n:'格局绑架术',q:'"谈钱就见外了，我们要有点格局。"',
+   d:'一谈具体条件，就上升到情怀、格局、忠诚度。<b>这是把利益之争偷换成忠诚之争</b>——你还没开口谈条件，就已经被放在了道德被告席上。',
+   s:'当对方开始谈格局，通常是因为他不想谈数字。'},
+  {n:'使命抵扣术',q:'"我们是在做一件伟大的事，别计较这些细节。"',
+   d:'用意义抵扣加班费、预算和人力。<b>意义成了最便宜的支付方式</b>，而且它还有一个副作用：让你自己不好意思再要。',
+   s:'伟大的事，就更应该配得上像样的预算和人手。'},
+  {n:'愿景无限延期',q:'"今年先打基础，明年才是收获期。"',
+   d:'把兑现时间一直往前推，让你永远处于"再坚持一下"的状态。<b>你投入的沉没成本越多，越舍不得走</b>——这是画饼术的进阶版本。',
+   s:'连续两年"明年会更好"，那就是这个游戏的规则本身。'}
+ ],
+ counter:[
+  '<b>把愿景翻译成排期</b>：每次听到大词，立刻追问四个问题——谁、什么时候、多少、从哪笔预算出。答不上来的愿景，就是加班通知。',
+  '<b>把饼写下来</b>：口头承诺在职场的有效期是 24 小时。落进邮件、纪要、OKR 的才叫承诺，其余的叫气氛。',
+  '<b>允许自己"没格局"一次</b>：谈钱、谈人、谈时间，不代表你不信这件事，只代表你想让它真的发生。',
+  '<b>给团队留一道理性防线</b>：你的感染力会让下属跟着你冲。在冲之前，先确认补给线——这是你对他们真正的责任。',
+  '<b>建立现实校验人</b>：身边必须有一个会泼冷水的务实派。你的天赋需要一个刹车，那个人就是刹车。'],
+ tips:[
+  {t:'听到画饼时',s:'这个目标我很认同。要实现它，我理解需要 X 人、Y 预算、Z 时间。这三样什么时候能到位？我先按到位时间排计划。',w:'不质疑梦想，只追问条件。对方越想谈远方，你越要谈日期。'},
+  {t:'被谈格局时',s:'我完全认同这个方向。正因为它重要，我才想把它做成。做成它需要的条件是……我们先把这个定了。',w:'把"你格局不够"翻译成"我要把它做成"，立场立刻反转。'},
+  {t:'资源不到位时',s:'如果资源暂时到不了位，我建议把目标拆成两期：一期做 A，二期做 B。这样一期能按时交付，也不影响整体故事。',w:'不砍梦想，砍范围。范围是可谈判的，梦想不是。'}
+ ],
+ ally:'孙悟空（没有他，你的愿景永远停在 PPT）、沙僧（替你把经文一趟趟背回来）',
+ danger:'王熙凤。她会接过你的理想，包装成她的战略。',
+ quote:'没有资源配套的愿景，叫加班通知。'
+},
+{
+ key:'zhugeliang',name:'诸葛亮',tag:'鞠躬尽瘁型 · 顶级牛马，死于事必躬亲',
+ one:'你能推演全局、预判三步之后的坑、把复杂的事变简单。但你的不可替代，正在反噬你自己。',
+ orig:{power:10,edge:5,craft:9,soft:5,calm:8},
+ read:['有你在，团队从不踩大坑。你能在问题发生之前就把它掐掉，能在一团乱麻里拎出主线，能用一份文档省掉十场会议。你是真正的高手。',
+ '但高手有一个专属陷阱：<b>系统按你的责任心上限来设定使用强度，而不是按岗位</b>。因为你从不让人失望，所以"别人会失望的事"就都归你了。你扛住了，所以问题不存在；问题不存在，所以不需要加人。',
+ '更麻烦的是，你不授权。不是你不想，是你没时间——带一个人要花的时间，比你自己做完多三倍。于是你一个人活成一条流水线，<b>你的效率成了你的牢房</b>：你不在，全链路停摆，这意味着你永远不能离开。',
+ '你要做的不是更高效地扛，而是<b>主动把一部分"扛"交出去，哪怕一开始会做得更差</b>。系统只会给会喊痛的人加资源，沉默的可靠，在管理者眼里等于"还有余量"。'],
+ sup:'全局推演、风险预判、体系搭建。有你在，团队从不踩大坑。',
+ weak:'扛得太多了。你没时间带人、没时间留档、没时间让自己变贵，只顾着让所有人不失望。',
+ tricks:[
+  {n:'鞠躬尽瘁陷阱',q:'"这个只有交给你我才放心。"',
+   d:'把最难的事都堆给你，使用强度<b>按你的责任心上限设定，而不是按岗位设定</b>。你越负责，系统越敢加压——你的美德，成了你的额度。',
+   s:'当你连续三次接到"只有你能"的活，说明没有人打算培养第二个人。'},
+  {n:'不可替代的反噬',q:'"上次那么难你都扛过来了，这次也行。"',
+   d:'你越能扛，系统越不会为你扩容。因为你扛住了，<b>所以"问题不存在"</b>。上限，成了你的额度；能力，成了你的惩罚。',
+   s:'一个从不报警的系统，永远不会被扩容。'},
+  {n:'事必躬亲的孤岛',q:'（所有关键环节都要经过你，你不在，全链路停摆）',
+   d:'你没时间带人、没时间沉淀，一个人活成一条流水线。表面是不可替代，实质是<b>被自己的效率锁死</b>——你越高效，越没人有动力把你换下来。',
+   s:'检验标准很简单：你敢不敢休一个完全断联的年假。'},
+  {n:'智力被无偿调用',q:'"帮我看一眼这个方案，就五分钟。"',
+   d:'你的判断力被当成公共资源，随取随用，从不计费。<b>零散的"五分钟"加起来，是你最贵的时间被最便宜地消耗掉。</b>',
+   s:'按次免费的建议，最后会变成按天免费的劳动力。'}
+ ],
+ counter:[
+  '<b>设一个"不接"的额度</b>：每周保留 20% 的时间，不解决任何人的问题，只用来做让自己变贵的事。这个额度神圣不可侵犯。',
+  '<b>把能力产品化</b>：能写文档的不亲自讲，能做成模板的不重复做，能授权的事哪怕做得差一点也放手。第一次慢，第三次就回本。',
+  '<b>主动汇报"扛不住"</b>：系统只会给会喊痛的人加资源。沉默的可靠，在管理者眼里等于"还有余量"。',
+  '<b>给自己找备份</b>：每个你独扛的环节，都必须有一个能接 60 分的人。60 分够了——它让你走得开。',
+  '<b>给咨询设门槛</b>：找你"看一眼"的人，请他先写一版自己的判断。既省你的时间，也逼对方成长。'],
+ tips:[
+  {t:'被堆活时',s:'这件事我可以做，但接了它，Q3 的核心项目会延后两周。请您在两者之间选一个，我按您的选择执行。',w:'不做取舍的人，就会被别人替他取舍。把选择明确抛回去。'},
+  {t:'要授权出去时',s:'这块我交给小陈，他做第一版，我来审。第一次会慢一点，但两轮之后我就能腾出手。',w:'主动提出"会慢一点"，堵住对方让你亲自来的理由。'},
+  {t:'要资源时',s:'目前这条线全压在我一个人身上，上周我请假两天，进度直接停了。建议至少补一个人做备份，否则风险敞口太大。',w:'用一次真实事故换扩编，比十次抱怨都有效。'}
+ ],
+ ally:'沙僧（唯一让你放心交付的人）、薛宝钗（替你处理你没精力处理的人情）',
+ danger:'唐僧。你的产出，很容易被他包装成他的愿景。',
+ quote:'鞠躬尽瘁的下一句，不是死而后已，是没人接盘。'
+},
+{
+ key:'liuer',name:'六耳猕猴',tag:'隐藏款 · 变色龙型 · 你不是某一型，你是所有型的集合体',
+ one:'你的五维高度均衡，说明你已经在职场里练出了"见人说人话"的能力。这是高阶玩家的标志，也是你疲惫的来源。',
+ orig:{power:5,edge:5,craft:5,soft:5,calm:5},
+ read:['对上你是沙僧（可靠、不添乱），对下你是悟空（能打、能扛），对平级你是宝钗（好说话、会做人）。你总能在任何房间里找到正确的姿态，而且切换得毫不费力。',
+ '这是一种被严重低估的高阶能力，但它有一个隐藏账单：<b>你演得太好，以至于没有人记得问一句"你自己想要什么"</b>。每个人都把你放在他需要的那个位置上，而那些位置加起来，不等于你的人生。',
+ '第二个代价是标签缺失。职场为"标签"支付溢价——专家有专家的价，多面手只有多面手的活。<b>没有标签的人，拿不到为标签准备的机会。</b>',
+ '你需要的不是少变一点，而是<b>在变化之中，保留一个不切换的核心</b>：能力可以变，底线不要变；风格可以变，目标不要变。'],
+ sup:'极强的场景适应力。对上是沙僧，对下是悟空，对平级是宝钗——你总能在任何房间里找到正确的姿态。',
+ weak:'切换得太熟练，容易忘了自己原本想要什么。你没有短板，但也可能没有主场。',
+ tricks:[
+  {n:'角色错配术',q:'"你最懂事了／你最能干了／你来协调一下。"',
+   d:'每个人都在把你<b>放在他需要的那个位置上</b>。你演得太好，以至于最后没有人记得问一句：你自己想演哪个角色？',
+   s:'当所有人都在夸你"什么都能干"，通常意味着你正在替所有人干。'},
+  {n:'多面手陷阱',q:'"你什么都能干，那就多兼一块。"',
+   d:'全能等于全责。<b>没有标签的人，拿不到为标签准备的溢价。</b>你被当成补丁，而不是资产。',
+   s:'看看你的岗位名称，能不能用一句话说清"你是干什么的"。'},
+  {n:'无懈可击的孤立',q:'（没人知道你的立场，所以没人真正站你这边）',
+   d:'你从不暴露偏好，于是也从不结盟。在需要别人替你说话的那一刻，<b>你会发现自己没有阵营</b>——而职场的关键时刻，往往就靠那一张票。',
+   s:'一个从不表态的人，在需要被支持时，也找不到支持者。'}
+ ],
+ counter:[
+  '<b>给自己定一个"不切换"的核心</b>：能力可以变，底线不要变；风格可以变，目标不要变。这是你所有的锚。',
+  '<b>主动申请一个标签</b>：让别人用一个具体的词记住你，而不是"什么都行"。标签是溢价的前提，也是机会的入口。',
+  '<b>每年做一次"角色盘点"</b>：把你在各场景扮演的角色写下来，看看哪个是你真想要的，哪个只是被需要的。',
+  '<b>在安全处暴露真实偏好</b>：不必处处真实，但要有一两个场合，你说的是自己的话。这是防止自己被角色吞掉的保险。',
+  '<b>建一个阵营</b>：选一个你认同的人或方向，公开站过去一次。没有阵营的人，不会被任何人当作自己人。'],
+ tips:[
+  {t:'被角色错配时',s:'这件事我可以做，但我更希望自己在数据分析这个方向深耕。类似的协调活，建议让小陈来，他能练出来。',w:'拒绝一个角色，必须先说出你想要的角色，否则只会被理解为推活。'},
+  {t:'要标签时',s:'今年我想把"XX 领域第一负责人"这个标签立起来。相关的项目请优先考虑我。',w:'把抽象的"我想发展"变成一个具体的、可分配的名分。'},
+  {t:'要同盟时',s:'我支持你在这个方案上的想法，也希望你在我那份材料上帮我站台。我们互相背书，比各自单打强。',w:'同盟不是感情，是明确互换。说清楚互换，反而更长久。'}
+ ],
+ ally:'你自己。以及任何一个见过你不演戏的样子的人。',
+ danger:'所有急着给你贴标签的人——标签一贴，你就被定型了。',
+ quote:'会变是本事，忘了自己原本什么样，是代价。'
+}
+];
+/* ================= 人物插画 ================= */
+var ART={
+wukong:'<defs><linearGradient id="gw" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#fbbf24"/><stop offset="1" stop-color="#dc2626"/></linearGradient></defs>'+
+'<circle cx="80" cy="80" r="80" fill="url(#gw)"/><circle cx="80" cy="80" r="66" fill="none" stroke="#fff" stroke-opacity=".32" stroke-width="2" stroke-dasharray="3 7"/>'+
+'<g transform="rotate(-28 80 130)"><rect x="24" y="126" width="112" height="10" rx="5" fill="#7c2d12"/><rect x="28" y="126.5" width="104" height="9" rx="4.5" fill="#fde68a"/><rect x="36" y="124" width="9" height="14" rx="3" fill="#fff7ed"/><rect x="115" y="124" width="9" height="14" rx="3" fill="#fff7ed"/></g>'+
+'<path d="M44 62 L32 40 L62 54 Z" fill="#b45309"/><path d="M116 62 L128 40 L98 54 Z" fill="#b45309"/>'+
+'<ellipse cx="80" cy="66" rx="38" ry="34" fill="#8b5a2b"/><path d="M42 66a38 34 0 0 1 76 0z" fill="#713f12"/>'+
+'<path d="M80 52c17 0 27 13 27 29 0 15-12 27-27 27s-27-12-27-27c0-16 10-29 27-29z" fill="#fcd9b0"/>'+
+'<path d="M57 61q9-13 23-11 14 2 23 13-9-9-23-9t-23 7z" fill="#78350f" opacity=".45"/>'+
+'<path d="M54 68q26-15 52 0" fill="none" stroke="#fbbf24" stroke-width="6" stroke-linecap="round"/>'+
+'<path d="M62 87l8-8 8 8" fill="none" stroke="#3b2412" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>'+
+'<path d="M82 87l8-8 8 8" fill="none" stroke="#3b2412" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>'+
+'<ellipse cx="59" cy="98" rx="7" ry="4.5" fill="#f87171" opacity=".4"/><ellipse cx="101" cy="98" rx="7" ry="4.5" fill="#f87171" opacity=".4"/>'+
+'<path d="M70 106q10 9 20-3" fill="none" stroke="#3b2412" stroke-width="3.5" stroke-linecap="round"/>',
+
+daiyu:'<defs><linearGradient id="gd" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#fbcfe8"/><stop offset="1" stop-color="#a78bfa"/></linearGradient></defs>'+
+'<circle cx="80" cy="80" r="80" fill="url(#gd)"/><circle cx="80" cy="80" r="66" fill="none" stroke="#fff" stroke-opacity=".32" stroke-width="2" stroke-dasharray="3 7"/>'+
+'<g fill="#fff" opacity=".9"><ellipse cx="32" cy="54" rx="8" ry="4.5" transform="rotate(-25 32 54)"/><ellipse cx="128" cy="60" rx="7" ry="4" transform="rotate(32 128 60)"/><ellipse cx="116" cy="122" rx="6.5" ry="3.8" transform="rotate(-14 116 122)"/><ellipse cx="40" cy="118" rx="6" ry="3.5" transform="rotate(20 40 118)"/></g>'+
+'<ellipse cx="80" cy="66" rx="37" ry="35" fill="#1f2937"/><path d="M43 68a37 35 0 0 1 74 0z" fill="#111827"/>'+
+'<circle cx="45" cy="48" r="11" fill="#1f2937"/><circle cx="115" cy="48" r="11" fill="#1f2937"/>'+
+'<path d="M80 54c16 0 26 12 26 27 0 15-12 26-26 26s-26-11-26-26c0-15 10-27 26-27z" fill="#fff5f6"/>'+
+'<path d="M56 62q8-14 24-12 16 2 24 13-10-9-24-9t-24 8z" fill="#111827"/>'+
+'<path d="M63 80q7-5 14-1" stroke="#4b5563" stroke-width="2.6" fill="none" stroke-linecap="round"/><path d="M83 79q7-4 14 1" stroke="#4b5563" stroke-width="2.6" fill="none" stroke-linecap="round"/>'+
+'<path d="M64 88q7 6 14 0" stroke="#374151" stroke-width="3.2" fill="none" stroke-linecap="round"/><path d="M82 88q7 6 14 0" stroke="#374151" stroke-width="3.2" fill="none" stroke-linecap="round"/>'+
+'<ellipse cx="61" cy="99" rx="6" ry="3.5" fill="#fda4af" opacity=".55"/><ellipse cx="99" cy="99" rx="6" ry="3.5" fill="#fda4af" opacity=".55"/>'+
+'<circle cx="66" cy="96" r="1.6" fill="#9f1239"/>'+
+'<path d="M75 107q5 3 10 0" stroke="#e11d48" stroke-width="2.6" fill="none" stroke-linecap="round"/>',
+
+baochai:'<defs><linearGradient id="gb" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#6ee7b7"/><stop offset="1" stop-color="#0ea5e9"/></linearGradient></defs>'+
+'<circle cx="80" cy="80" r="80" fill="url(#gb)"/><circle cx="80" cy="80" r="66" fill="none" stroke="#fff" stroke-opacity=".32" stroke-width="2" stroke-dasharray="3 7"/>'+
+'<g transform="translate(124,100)"><rect x="-2.5" y="14" width="5" height="22" rx="2.5" fill="#b45309"/><circle r="19" fill="#fef3c7" opacity=".92"/><circle r="19" fill="none" stroke="#f59e0b" stroke-width="2.5"/><path d="M0-19v38M-19 0h38" stroke="#fbbf24" stroke-width="1.3" opacity=".65"/><circle r="4" fill="#f59e0b"/></g>'+
+'<ellipse cx="80" cy="68" rx="36" ry="34" fill="#1f2937"/><path d="M44 70a36 34 0 0 1 72 0z" fill="#111827"/>'+
+'<ellipse cx="80" cy="29" rx="17" ry="12" fill="#1f2937"/>'+
+'<path d="M64 32q2-11 8-4" stroke="#fbbf24" stroke-width="2.4" fill="none" stroke-linecap="round"/><path d="M96 32q-2-11-8-4" stroke="#fbbf24" stroke-width="2.4" fill="none" stroke-linecap="round"/>'+
+'<circle cx="62" cy="27" r="3" fill="#fde68a"/><circle cx="98" cy="27" r="3" fill="#fde68a"/>'+
+'<path d="M80 54c16 0 26 12 26 27 0 15-12 25-26 25s-26-10-26-25c0-15 10-27 26-27z" fill="#fef3e2"/>'+
+'<path d="M57 63q9-12 23-10 14 2 23 12-9-8-23-8t-23 6z" fill="#111827" opacity=".9"/>'+
+'<path d="M63 82q8-5 15-1" stroke="#4b5563" stroke-width="2.6" fill="none" stroke-linecap="round"/><path d="M82 81q8-4 15 1" stroke="#4b5563" stroke-width="2.6" fill="none" stroke-linecap="round"/>'+
+'<path d="M64 90q7-6 14 0" stroke="#374151" stroke-width="3.2" fill="none" stroke-linecap="round"/><path d="M82 90q7-6 14 0" stroke="#374151" stroke-width="3.2" fill="none" stroke-linecap="round"/>'+
+'<ellipse cx="60" cy="100" rx="6" ry="3.5" fill="#fda4af" opacity=".45"/><ellipse cx="100" cy="100" rx="6" ry="3.5" fill="#fda4af" opacity=".45"/>'+
+'<path d="M72 106q8 6 16 0" stroke="#b91c1c" stroke-width="3" fill="none" stroke-linecap="round"/>',
+
+xifeng:'<defs><linearGradient id="gx" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#f0abfc"/><stop offset="1" stop-color="#7c3aed"/></linearGradient></defs>'+
+'<circle cx="80" cy="80" r="80" fill="url(#gx)"/><circle cx="80" cy="80" r="66" fill="none" stroke="#fff" stroke-opacity=".32" stroke-width="2" stroke-dasharray="3 7"/>'+
+'<g transform="translate(80,134)"><rect x="-42" y="-13" width="84" height="26" rx="6" fill="#78350f"/><rect x="-37" y="-10" width="74" height="20" rx="4" fill="#fbbf24" opacity=".45"/><path d="M-37 -3h74M-37 4h74" stroke="#78350f" stroke-width="1.6"/>'+
+'<g fill="#fef3c7"><circle cx="-27" cy="-6" r="3.2"/><circle cx="-12" cy="-6" r="3.2"/><circle cx="3" cy="-6" r="3.2"/><circle cx="18" cy="-6" r="3.2"/><circle cx="31" cy="-6" r="3.2"/><circle cx="-27" cy="8" r="3.2"/><circle cx="-12" cy="8" r="3.2"/><circle cx="3" cy="8" r="3.2"/><circle cx="18" cy="8" r="3.2"/><circle cx="31" cy="8" r="3.2"/></g></g>'+
+'<ellipse cx="80" cy="68" rx="36" ry="33" fill="#111827"/>'+
+'<g><path d="M46 62 L58 26 L70 58 Z" fill="#fbbf24"/><path d="M72 58 L86 22 L100 58 Z" fill="#f59e0b"/><path d="M90 60 L106 32 L114 62 Z" fill="#fbbf24"/></g>'+
+'<circle cx="86" cy="30" r="5" fill="#fef3c7"/>'+
+'<g fill="#fde68a"><circle cx="50" cy="74" r="3"/><circle cx="48" cy="83" r="3"/><circle cx="110" cy="74" r="3"/><circle cx="112" cy="83" r="3"/></g>'+
+'<path d="M80 56c16 0 25 12 25 26 0 15-11 25-25 25s-25-10-25-25c0-14 9-26 25-26z" fill="#fde6d0"/>'+
+'<path d="M58 66q9-11 22-9 13 2 22 11-9-7-22-7t-22 5z" fill="#111827" opacity=".85"/>'+
+'<path d="M60 90l13-9 8 6" fill="none" stroke="#1f2937" stroke-width="3.2" stroke-linejoin="round" stroke-linecap="round"/>'+
+'<path d="M80 87l8-3 13 9" fill="none" stroke="#1f2937" stroke-width="3.2" stroke-linejoin="round" stroke-linecap="round"/>'+
+'<circle cx="70" cy="88" r="2.4" fill="#1f2937"/><circle cx="92" cy="88" r="2.4" fill="#1f2937"/>'+
+'<path d="M71 106q9 6 18 0" stroke="#be123c" stroke-width="4" fill="none" stroke-linecap="round"/>',
+
+bajie:'<defs><linearGradient id="gj" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#fcd34d"/><stop offset="1" stop-color="#fb923c"/></linearGradient></defs>'+
+'<circle cx="80" cy="80" r="80" fill="url(#gj)"/><circle cx="80" cy="80" r="66" fill="none" stroke="#fff" stroke-opacity=".32" stroke-width="2" stroke-dasharray="3 7"/>'+
+'<g transform="translate(120,116) rotate(22)"><rect x="-3" y="-28" width="6" height="58" rx="3" fill="#78350f"/><rect x="-17" y="-32" width="34" height="8" rx="4" fill="#9ca3af"/><g fill="#e5e7eb"><rect x="-16" y="-42" width="4.5" height="11" rx="2.2"/><rect x="-8.5" y="-42" width="4.5" height="11" rx="2.2"/><rect x="-1" y="-42" width="4.5" height="11" rx="2.2"/><rect x="6.5" y="-42" width="4.5" height="11" rx="2.2"/><rect x="14" y="-42" width="4.5" height="11" rx="2.2"/></g></g>'+
+'<ellipse cx="43" cy="74" rx="16" ry="23" fill="#f4b183" transform="rotate(-12 43 74)"/><ellipse cx="117" cy="74" rx="16" ry="23" fill="#f4b183" transform="rotate(12 117 74)"/>'+
+'<ellipse cx="43" cy="74" rx="9" ry="14" fill="#dd8f68" opacity=".5"/><ellipse cx="117" cy="74" rx="9" ry="14" fill="#dd8f68" opacity=".5"/>'+
+'<ellipse cx="80" cy="76" rx="34" ry="32" fill="#fcd9b6"/>'+
+'<path d="M46 62q34-32 68 0z" fill="#4c1d95"/><path d="M46 62q34-14 68 0z" fill="#5b21b6"/>'+
+'<ellipse cx="80" cy="92" rx="14" ry="10.5" fill="#f4a68a"/><ellipse cx="75" cy="92" rx="2.6" ry="3.4" fill="#9a3412"/><ellipse cx="85" cy="92" rx="2.6" ry="3.4" fill="#9a3412"/>'+
+'<path d="M59 76q7-7 14 0" stroke="#3b2412" stroke-width="3.4" fill="none" stroke-linecap="round"/><path d="M87 76q7-7 14 0" stroke="#3b2412" stroke-width="3.4" fill="none" stroke-linecap="round"/>'+
+'<ellipse cx="56" cy="88" rx="6.5" ry="4" fill="#f87171" opacity=".4"/><ellipse cx="104" cy="88" rx="6.5" ry="4" fill="#f87171" opacity=".4"/>'+
+'<path d="M64 102q16 17 32 0" stroke="#7c2d12" stroke-width="3.4" fill="none" stroke-linecap="round"/>',
+
+shaseng:'<defs><linearGradient id="gs" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#94a3b8"/><stop offset="1" stop-color="#1e3a8a"/></linearGradient></defs>'+
+'<circle cx="80" cy="80" r="80" fill="url(#gs)"/><circle cx="80" cy="80" r="66" fill="none" stroke="#fff" stroke-opacity=".32" stroke-width="2" stroke-dasharray="3 7"/>'+
+'<ellipse cx="80" cy="66" rx="37" ry="34" fill="#b91c1c"/><path d="M43 68a37 34 0 0 1 74 0z" fill="#991b1b"/>'+
+'<path d="M52 66q28-13 56 0" stroke="#fbbf24" stroke-width="5" fill="none" stroke-linecap="round"/>'+
+'<path d="M80 54c16 0 26 12 26 27 0 15-12 26-26 26s-26-11-26-26c0-15 10-27 26-27z" fill="#dba76f"/>'+
+'<path d="M56 62q9-12 24-10 15 2 24 12-9-8-24-8t-24 6z" fill="#991b1b" opacity=".55"/>'+
+'<path d="M61 80h17" stroke="#1f2937" stroke-width="3.6" stroke-linecap="round"/><path d="M82 80h17" stroke="#1f2937" stroke-width="3.6" stroke-linecap="round"/>'+
+'<path d="M62 89h15" stroke="#3b2412" stroke-width="3.2" stroke-linecap="round"/><path d="M83 89h15" stroke="#3b2412" stroke-width="3.2" stroke-linecap="round"/>'+
+'<circle cx="69" cy="90" r="2.2" fill="#3b2412"/><circle cx="90" cy="90" r="2.2" fill="#3b2412"/>'+
+'<path d="M72 106h16" stroke="#7c2d12" stroke-width="3.2" stroke-linecap="round"/>'+
+'<path d="M50 116q30 18 60 0" stroke="#78350f" stroke-width="3" fill="none"/>'+
+'<g fill="#fef3c7"><circle cx="61" cy="121" r="5.4"/><circle cx="72" cy="126" r="5.4"/><circle cx="80" cy="128" r="6"/><circle cx="88" cy="126" r="5.4"/><circle cx="99" cy="121" r="5.4"/></g>',
+
+tangseng:'<defs><linearGradient id="gt" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#fde68a"/><stop offset="1" stop-color="#f59e0b"/></linearGradient></defs>'+
+'<circle cx="80" cy="80" r="80" fill="url(#gt)"/><circle cx="80" cy="80" r="66" fill="none" stroke="#fff" stroke-opacity=".34" stroke-width="2" stroke-dasharray="3 7"/>'+
+'<g transform="translate(6,0)"><rect x="120" y="44" width="6" height="104" rx="3" fill="#b45309"/><circle cx="123" cy="36" r="10" fill="none" stroke="#fbbf24" stroke-width="3.5"/><circle cx="123" cy="22" r="4.5" fill="none" stroke="#fbbf24" stroke-width="2.5"/><circle cx="113" cy="40" r="4" fill="none" stroke="#fbbf24" stroke-width="2.2"/><circle cx="133" cy="40" r="4" fill="none" stroke="#fbbf24" stroke-width="2.2"/></g>'+
+'<ellipse cx="78" cy="72" rx="33" ry="33" fill="#fde8cd"/>'+
+'<g fill="#fbbf24"><path d="M78 26l-9 24h18z"/><path d="M57 33l-6 21 17-5z"/><path d="M99 33l6 21-17-5z"/><path d="M42 49l-3 19 15-9z"/><path d="M114 49l3 19-15-9z"/></g>'+
+'<path d="M42 64h72v7H42z" fill="#f59e0b"/>'+
+'<circle cx="78" cy="74" r="4" fill="#f43f5e" opacity=".65"/>'+
+'<path d="M60 88q7 6 14 0" stroke="#3b2412" stroke-width="3.2" fill="none" stroke-linecap="round"/><path d="M82 88q7 6 14 0" stroke="#3b2412" stroke-width="3.2" fill="none" stroke-linecap="round"/>'+
+'<ellipse cx="58" cy="94" rx="6" ry="3.5" fill="#fb923c" opacity=".35"/><ellipse cx="98" cy="94" rx="6" ry="3.5" fill="#fb923c" opacity=".35"/>'+
+'<path d="M71 104q7 5 14 0" stroke="#b45309" stroke-width="3" fill="none" stroke-linecap="round"/>',
+
+zhugeliang:'<defs><linearGradient id="gz" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#93c5fd"/><stop offset="1" stop-color="#4338ca"/></linearGradient></defs>'+
+'<circle cx="80" cy="80" r="80" fill="url(#gz)"/><circle cx="80" cy="80" r="66" fill="none" stroke="#fff" stroke-opacity=".32" stroke-width="2" stroke-dasharray="3 7"/>'+
+'<g transform="translate(114,102) rotate(16)"><path d="M0 4 L-30 -22 Q-2 -46 26 -16 Z" fill="#f1f5f9" opacity=".96"/><path d="M0 4L-30 -22M0 4L-12 -34M0 4L10 -33M0 4L22 -22" stroke="#cbd5e1" stroke-width="1.4"/><rect x="-3" y="2" width="6" height="26" rx="3" fill="#7c2d12"/></g>'+
+'<path d="M46 66q34-36 68 0z" fill="#1e3a8a"/><rect x="50" y="42" width="60" height="24" rx="9" fill="#1e40af"/><path d="M50 52h60" stroke="#3b82f6" stroke-width="2"/>'+
+'<path d="M110 56q16 8 12 26" stroke="#1e3a8a" stroke-width="6" fill="none" stroke-linecap="round"/>'+
+'<path d="M80 56c16 0 26 12 26 26 0 15-12 25-26 25s-26-10-26-25c0-14 10-26 26-26z" fill="#fde8cd"/>'+
+'<path d="M63 82q8-5 15-1" stroke="#4b5563" stroke-width="2.6" fill="none" stroke-linecap="round"/><path d="M82 81q8-4 15 1" stroke="#4b5563" stroke-width="2.6" fill="none" stroke-linecap="round"/>'+
+'<path d="M62 90h16" stroke="#1f2937" stroke-width="3" stroke-linecap="round"/><path d="M82 90h16" stroke="#1f2937" stroke-width="3" stroke-linecap="round"/>'+
+'<circle cx="70" cy="91" r="2.6" fill="#1f2937"/><circle cx="90" cy="91" r="2.6" fill="#1f2937"/>'+
+'<path d="M68 106q12 9 24 0" stroke="#e5e7eb" stroke-width="3" fill="none" stroke-linecap="round"/><path d="M70 113q10 15 20 0" stroke="#e5e7eb" stroke-width="3.6" fill="none" stroke-linecap="round"/><path d="M74 120q6 11 12 0" stroke="#f3f4f6" stroke-width="3" fill="none" stroke-linecap="round"/>',
+
+liuer:'<defs><linearGradient id="gl" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#c4b5fd"/><stop offset=".5" stop-color="#6366f1"/><stop offset="1" stop-color="#06b6d4"/></linearGradient></defs>'+
+'<circle cx="80" cy="80" r="80" fill="url(#gl)"/><circle cx="80" cy="80" r="66" fill="none" stroke="#fff" stroke-opacity=".32" stroke-width="2" stroke-dasharray="3 7"/>'+
+'<g stroke="#4c1d95" stroke-width="4.5" fill="none" stroke-linecap="round"><path d="M45 64a10 13 0 0 0 0 24"/><path d="M115 64a10 13 0 0 1 0 24"/><path d="M42 52a8 10 0 0 0-3 13"/><path d="M118 52a8 10 0 0 1 3 13"/><path d="M43 100a8 10 0 0 1 3 13"/><path d="M117 100a8 10 0 0 0-3 13"/></g>'+
+'<path d="M80 46a34 34 0 0 0 0 68z" fill="#e0e7ff"/><path d="M80 46a34 34 0 0 1 0 68z" fill="#cffafe"/>'+
+'<path d="M80 46a34 34 0 0 0 0 68z" fill="#f5d7c8" opacity=".35"/>'+
+'<path d="M80 46v68" stroke="#0f172a" stroke-width="1.6" opacity=".22"/>'+
+'<path d="M80 58a26 27 0 0 1 0 50z" fill="#1e1b4b" opacity=".16"/>'+
+'<path d="M61 88h15" stroke="#312e81" stroke-width="3.4" stroke-linecap="round"/><path d="M84 88h15" stroke="#312e81" stroke-width="3.4" stroke-linecap="round"/>'+
+'<circle cx="68" cy="89" r="4.2" fill="#7c3aed"/><circle cx="91" cy="89" r="4.2" fill="#0891b2"/>'+
+'<path d="M71 108q9 5 18-1" stroke="#312e81" stroke-width="3.2" fill="none" stroke-linecap="round"/>'
+};
+function artSVG(key){return '<svg viewBox="0 0 160 160" xmlns="http://www.w3.org/2000/svg">'+ART[key]+'</svg>';}
+function artIMG(key){return '<img src="assets/'+key+'.jpg" alt="" onerror="this.onerror=null;this.parentNode.innerHTML=artSVG(\''+key+'\')">';}
+
+/* ================= 题目（24 题 / 6 组） ================= */
+var GROUPS=['接活时刻','功劳与锅','向上管理','同级博弈','情绪暗流','自我底牌'];
+var QS=[
+{g:0,t:'周一早会，领导突然甩来一个没人愿意接的烂摊子，全场沉默：',
+ o:[{x:'"我来吧。"反正我干得快，早干完早省心',d:{power:2,soft:1}},
+    {x:'先举手提问：这活给我，人和预算怎么配？',d:{craft:2,edge:1}},
+    {x:'心里一万个不愿意，嘴上还是说了"好的"',d:{soft:2,edge:-1}},
+    {x:'当场摊开风险清单，给出三套方案让领导选',d:{power:2,craft:1}}]},
+{g:0,t:'同事在群里@你："哥／姐，这个只有你能救了。"',
+ o:[{x:'二话不说上手，救火本来就是我的本色',d:{power:2}},
+    {x:'笑嘻嘻回："行吧，一杯奶茶抵。"',d:{soft:1,calm:2}},
+    {x:'先花三秒判断：这到底是不是他的活',d:{craft:2,edge:1}},
+    {x:'有点烦，但还是做了，做完自己生半天闷气',d:{soft:2,power:1}}]},
+{g:0,t:'快下班了，领导临时加需求，明天就要：',
+ o:[{x:'熬夜搞定，向来如此',d:{power:2,calm:1}},
+    {x:'列出现有排期，请他砍掉一个',d:{craft:2,edge:1}},
+    {x:'应下来，然后焦虑一整晚',d:{soft:2}},
+    {x:'先确认这个需求的真实优先级再动手',d:{craft:2,calm:1}}]},
+{g:0,t:'你手上已经三个项目，第四个又要来了：',
+ o:[{x:'挤挤总能做完，我效率高',d:{power:2}},
+    {x:'书面同步现状，请领导排序',d:{craft:3}},
+    {x:'不说话，默默扛着',d:{soft:2,calm:1}},
+    {x:'直接说：现在接会砸，我建议延到下周',d:{edge:3}}]},
+{g:1,t:'领导当众表扬："这个项目全靠他一个人扛下来的。"',
+ o:[{x:'值了，熬夜没白熬，心里是真爽',d:{power:1,edge:2}},
+    {x:'立刻接话：是团队一起做的，领导方向指得好',d:{craft:3}},
+    {x:'不太自在，怕同事在底下翻白眼',d:{soft:2,calm:1}},
+    {x:'心里很清醒：完了，接下来的活更多了',d:{craft:2,calm:1}}]},
+{g:1,t:'你发现同事在领导面前，把你的功劳算到了他头上：',
+ o:[{x:'直接当面开撕，摆事实讲道理',d:{edge:3,power:1}},
+    {x:'不动声色，开始留痕、抄送、把过程公开化',d:{craft:3}},
+    {x:'难过好几天，但一个字都没说',d:{soft:3}},
+    {x:'算了，下次不跟他合作就是了',d:{calm:2,craft:1}}]},
+{g:1,t:'项目出事，复盘会上所有人都在找原因：',
+ o:[{x:'是我的责任我认，但根因在流程',d:{edge:2,power:1}},
+    {x:'提前准备好时间线和邮件记录',d:{craft:3}},
+    {x:'一句话说不出来，只想赶紧结束',d:{soft:3}},
+    {x:'先听，等大家说完再补关键事实',d:{calm:2,craft:2}}]},
+{g:1,t:'季度评优，干活最多的人没被评上：',
+ o:[{x:'去找领导理论',d:{edge:3}},
+    {x:'提前一个月就在同步自己的产出',d:{craft:3}},
+    {x:'算了，反正我也不在乎（其实很在乎）',d:{soft:2,calm:1}},
+    {x:'帮被评上的人鼓掌，然后更新简历',d:{calm:3}}]},
+{g:2,t:'领导说："这个事你看着办吧。"你的第一反应：',
+ o:[{x:'太好了，自由度拉满，我最怕被人盯着',d:{power:2}},
+    {x:'危险。先在群里复述一遍，请他确认',d:{craft:2,calm:1}},
+    {x:'压力好大，万一办砸了怎么办',d:{soft:2}},
+    {x:'先把三种可能的结果都想清楚，再动手',d:{craft:2,power:1}}]},
+{g:2,t:'面对领导画的大饼，你通常：',
+ o:[{x:'听得热血沸腾，还能帮他把故事讲得更圆',d:{soft:2,power:1}},
+    {x:'左耳进右耳出，该干嘛干嘛',d:{calm:3}},
+    {x:'当场换算：几个人、多少钱、几月兑现',d:{craft:3}},
+    {x:'嘴上说好，心里已经在准备 Plan B',d:{craft:2,calm:1}}]},
+{g:2,t:'想申请加薪，你会怎么准备：',
+ o:[{x:'先把下个季度的成绩做出来再说',d:{power:2,soft:1}},
+    {x:'带着数据和市场行情去谈',d:{craft:3}},
+    {x:'开不了口，等领导主动发现',d:{soft:3}},
+    {x:'拿到外面一个 offer 再谈',d:{craft:2,edge:2}}]},
+{g:2,t:'领导让你做一件你觉得不对的事：',
+ o:[{x:'照做。他是领导，我负责执行',d:{soft:2,calm:1}},
+    {x:'当面说不，把理由讲清楚',d:{edge:3}},
+    {x:'做，但要留好书面指令',d:{craft:3}},
+    {x:'先拖一拖，看看风向再说',d:{craft:1,calm:2}}]},
+{g:3,t:'平级同事和你抢同一个人力资源：',
+ o:[{x:'直接找他谈，谁急谁先用',d:{edge:2,calm:1}},
+    {x:'先跟领导对齐优先级，让领导拍板',d:{craft:3}},
+    {x:'算了，给他吧，别伤和气',d:{soft:2}},
+    {x:'拉他一起做个方案，把蛋糕做大',d:{craft:2,power:1}}]},
+{g:3,t:'有人在会上阴阳怪气地怼你：',
+ o:[{x:'当场怼回去，不能吃亏',d:{edge:3}},
+    {x:'笑着接住，把他的话变成我的素材',d:{craft:3}},
+    {x:'回去难受半天，一句话都没接上',d:{soft:3}},
+    {x:'当没听见，会后单独找他聊',d:{calm:2,craft:1}}]},
+{g:3,t:'你需要别的部门配合，对方一直拖：',
+ o:[{x:'自己做掉算了，求人不如求己',d:{power:2,soft:1}},
+    {x:'拉个群，把他的领导也请进来',d:{craft:3}},
+    {x:'干着急，不知道该怎么办',d:{soft:2}},
+    {x:'直接找对方领导反映',d:{edge:2,craft:1}}]},
+{g:3,t:'团队里有个明显不靠谱的人，拖了整体进度：',
+ o:[{x:'替他兜底吧，反正我干得快',d:{power:2,soft:1}},
+    {x:'划清边界，让他自己承担后果',d:{edge:2,calm:1}},
+    {x:'不撕破脸，悄悄把关键环节攥在自己手里',d:{craft:3}},
+    {x:'找领导反映，请领导来协调',d:{craft:1,edge:1}}]},
+{g:4,t:'加班到晚上十一点，你的朋友圈：',
+ o:[{x:'不发。干完就走，没什么好说的',d:{calm:2,power:1}},
+    {x:'发。配文"又是充实的一天"+公司定位',d:{edge:2,craft:1}},
+    {x:'发。配一句只有自己听得懂的丧话',d:{soft:2,edge:1}},
+    {x:'不发。截图留证，第二天申请调休',d:{craft:2,calm:1}}]},
+{g:4,t:'被领导当众批评，明明不是你的错：',
+ o:[{x:'当场解释清楚，不能背这个锅',d:{edge:3}},
+    {x:'会后单独说明，并且带上证据',d:{craft:3}},
+    {x:'眼眶红了，一句话都说不出来',d:{soft:3}},
+    {x:'表面受教，心里默默记一笔',d:{calm:2,craft:1}}]},
+{g:4,t:'深夜十一点，工作群弹出一条消息：',
+ o:[{x:'秒回。我一直在线，这是习惯',d:{power:2,soft:1}},
+    {x:'看到了，第二天正常时间回',d:{calm:3}},
+    {x:'焦虑，回也不是、不回也不是',d:{soft:2}},
+    {x:'设了免打扰，第二天解释"睡了"',d:{calm:2,craft:1}}]},
+{g:4,t:'连续两周高压，你真实的状态是：',
+ o:[{x:'还行，忙完这阵就好了',d:{power:2,calm:1}},
+    {x:'会主动申请调休或者减负',d:{craft:2,calm:1}},
+    {x:'失眠、易怒、什么都不想干',d:{soft:3}},
+    {x:'找人吐槽，吐槽完继续干',d:{soft:1,calm:2}}]},
+{g:5,t:'你的工位和电脑桌面：',
+ o:[{x:'极简。东西找不到也无所谓',d:{calm:2,power:1}},
+    {x:'分类清晰，命名规范，一眼可查',d:{craft:2,calm:2}},
+    {x:'有点乱，但很有生活气息',d:{soft:1,power:1}},
+    {x:'贴满便签，密密麻麻全是别人的事',d:{power:2,soft:1}}]},
+{g:5,t:'如果明天可以不上班，你会：',
+ o:[{x:'睡不着，那个方案还能再改一版',d:{power:3}},
+    {x:'睡觉、遛弯、刷剧，谁也别来找我',d:{calm:3}},
+    {x:'约朋友出去，认认真真享受生活',d:{soft:1,calm:2}},
+    {x:'有点慌，突然不知道该干什么',d:{soft:2,edge:-1}}]},
+{g:5,t:'你认为职场里最重要的是：',
+ o:[{x:'能力。硬通货，谁也拿不走',d:{power:3}},
+    {x:'关系。关键是出事的时候谁站你这边',d:{craft:3}},
+    {x:'开心。别把自己搞垮了，不值得',d:{calm:3}},
+    {x:'被需要。有人惦记着你，才算有价值',d:{soft:3}}]},
+{g:5,t:'五年后，你最想成为：',
+ o:[{x:'某个领域里不可替代的专家',d:{power:3}},
+    {x:'说了算的那个人',d:{craft:2,edge:2}},
+    {x:'有时间生活的人',d:{calm:3}},
+    {x:'被一群人真心记着的人',d:{soft:3}}]}
+];
+
+/* ================= 归一化：均值 / 标准差 ================= */
+var MEAN={},SD={},SCALE=1.9;
+(function(){
+  DIMS.forEach(function(d){MEAN[d.k]=0;SD[d.k]=0;});
+  QS.forEach(function(q){
+    DIMS.forEach(function(d){
+      var vals=q.o.map(function(o){return o.d[d.k]||0;});
+      var m=vals.reduce(function(a,b){return a+b;},0)/vals.length;
+      MEAN[d.k]+=m;
+      SD[d.k]+=vals.reduce(function(a,b){return a+(b-m)*(b-m);},0)/vals.length;
+    });
+  });
+  DIMS.forEach(function(d){SD[d.k]=Math.sqrt(SD[d.k])||1;});
+})();
+/* 用"原型作答"反推每型的可达中心，再与语义向量混合，保证 9 型都够得着 */
+(function(){
+  TYPES.forEach(function(t){
+    if(t.key==='liuer'){t.vec={power:5,edge:5,craft:5,soft:5,calm:5};return;}
+    var cent={};DIMS.forEach(function(d){cent[d.k]=(t.orig[d.k]-5)/5;});
+    var ans=QS.map(function(q){
+      var best=0,bs=-1e9;
+      q.o.forEach(function(o,i){
+        var s=0;for(var k in cent)s+=cent[k]*(o.d[k]||0);
+        if(s>bs){bs=s;best=i;}
+      });
+      return best;
+    });
+    var raw={};DIMS.forEach(function(d){raw[d.k]=0;});
+    ans.forEach(function(a,i){var d=QS[i].o[a].d||{};for(var k in d)raw[k]=(raw[k]||0)+d[k];});
+    var vec={};
+    DIMS.forEach(function(d){
+      var zp=5+(raw[d.k]-MEAN[d.k])/SD[d.k]*SCALE;
+      zp=Math.max(0.4,Math.min(9.6,zp));
+      vec[d.k]=0.4*zp+0.6*(5+(t.orig[d.k]-5)*0.45);
+    });
+    t.vec=vec;
+  });
+})();
+
+/* ================= 状态 ================= */
+var cur=0,ans=[],scores={},result=null;
+function startQuiz(){go('s-quiz');cur=0;ans=[];renderQ();}
+function restart(){go('s-intro');window.scrollTo(0,0);}
+function go(id){
+  ['s-intro','s-quiz','s-load','s-result','s-lib'].forEach(function(s){
+    document.getElementById(s).classList.toggle('hide',s!==id);
+  });
+  window.scrollTo({top:0,behavior:'smooth'});
+}
+function renderQ(){
+  var q=QS[cur];
+  document.getElementById('pnum').textContent=(cur+1)+' / '+QS.length;
+  document.getElementById('pbar').style.width=((cur+1)/QS.length*100)+'%';
+  document.getElementById('qtag').textContent=GROUPS[q.g]+' · 第 '+Math.floor(cur/4+1)+' 题';
+  document.getElementById('qwater').textContent=String(cur+1).padStart(2,'0');
+  document.getElementById('qtext').textContent=q.t;
+  document.getElementById('btnPrev').style.visibility=cur===0?'hidden':'visible';
+  var box=document.getElementById('opts'),html='',L=['A','B','C','D'];
+  q.o.forEach(function(o,i){
+    html+='<button class="opt'+(ans[cur]===i?' on':'')+'" onclick="pick('+i+')">'+
+          '<span class="k">'+L[i]+'</span><span>'+o.x+'</span></button>';
+  });
+  box.innerHTML=html;
+  var c=document.getElementById('qcard');
+  c.classList.remove('rise');void c.offsetWidth;c.classList.add('rise');
+}
+function pick(i){
+  ans[cur]=i;
+  setTimeout(function(){
+    if(cur<QS.length-1){cur++;renderQ();}
+    else calc();
+  },190);
+}
+function prevQ(){if(cur>0){cur--;renderQ();}}
+
+function calc(){
+  go('s-load');
+  var tx=['拆解你的驭人术弱点…','比对 9 种人格原型的距离…','正在识别谁在拿捏你…','生成你的反制手册与锦囊…'];
+  var n=0,timer=setInterval(function(){n++;document.getElementById('loadtx').textContent=tx[n%tx.length];},430);
+  setTimeout(function(){
+    clearInterval(timer);
+    var raw={};DIMS.forEach(function(d){raw[d.k]=0;});
+    ans.forEach(function(a,i){var d=QS[i].o[a].d||{};for(var k in d)raw[k]=(raw[k]||0)+d[k];});
+    var norm={};
+    DIMS.forEach(function(d){
+      var v=5+(raw[d.k]-MEAN[d.k])/SD[d.k]*SCALE;
+      norm[d.k]=Math.max(0.4,Math.min(9.6,v));
+    });
+    scores=norm;
+    var pool=TYPES.filter(function(t){return t.key!=='liuer';});
+    var list=pool.map(function(t){
+      var s=0;DIMS.forEach(function(d){var diff=norm[d.k]-t.vec[d.k];s+=diff*diff;});
+      return {t:t,dist:Math.sqrt(s)};
+    }).sort(function(a,b){return a.dist-b.dist;});
+    var w=list.map(function(x){return 1/Math.pow(x.dist+0.55,3.2);});
+    var sum=w.reduce(function(a,b){return a+b;},0);
+    list.forEach(function(x,i){x.pct=w[i]/sum*100;});
+    if(list[0].pct-list[1].pct<2.0){
+      result={t:TYPES.filter(function(t){return t.key==='liuer';})[0],mix:list.slice(0,3),special:true};
+    }else{
+      result={t:list[0].t,mix:list.slice(0,3),special:false};
+    }
+    showResult();
+  },1900);
+}
+
+function showResult(){
+  var T=result.t;
+  document.getElementById('rava').innerHTML=artIMG(T.key);
+  document.getElementById('rname').textContent=T.name;
+  document.getElementById('rtag').textContent=T.tag;
+  document.getElementById('rone').textContent=T.one;
+
+  var od=DIMS.map(function(d){return {n:d.n,v:T.orig[d.k]};}).sort(function(a,b){return b.v-a.v;});
+  var chips=['#'+od[0].n+'最强','#次高：'+od[1].n,'最常中招：'+T.tricks[0].n,'驭人术 '+T.tricks.length+' 式'];
+  document.getElementById('rchips').innerHTML=chips.map(function(c){return '<span class="chip">'+c+'</span>';}).join('');
+
+  document.getElementById('rread').innerHTML=T.read.map(function(p){return '<p>'+p+'</p>';}).join('');
+
+  var mixHtml='';
+  result.mix.forEach(function(x){
+    mixHtml+='<div class="mix"><span class="nm">'+x.t.name+'</span>'+
+      '<span class="ln"><i style="width:'+x.pct.toFixed(0)+'%"></i></span>'+
+      '<span class="vl">'+x.pct.toFixed(0)+'%</span></div>';
+  });
+  if(result.special){
+    mixHtml+='<div style="font-size:12.8px;color:#7a5212;background:#fdf7e7;border:1px solid #ecd9a8;border-radius:13px;padding:11px 13px;margin-top:8px;line-height:1.8">'+
+      '你的前几型得分过于接近，触发隐藏人格「六耳猕猴」——这说明你已具备很强的场景切换能力。</div>';
+  }
+  document.getElementById('mix').innerHTML=mixHtml;
+  setTimeout(function(){
+    document.querySelectorAll('#mix .ln i').forEach(function(e){
+      var wd=e.style.width;e.style.width='0';setTimeout(function(){e.style.width=wd;},70);
+    });
+  },70);
+
+  drawRadar(scores);
+  var lg='';
+  DIMS.forEach(function(d){
+    lg+='<div><b style="color:#a92c1f">'+d.n+' '+scores[d.k].toFixed(1)+'</b> · '+dimWord(d.k,scores[d.k])+'</div>';
+  });
+  document.getElementById('legend').innerHTML=lg;
+
+  document.getElementById('rsuper').textContent=T.sup;
+  document.getElementById('rweak').textContent=T.weak;
+
+  var th='';
+  T.tricks.forEach(function(x,i){
+    th+='<div class="trick"><span class="tn"><i>0'+(i+1)+'</i>'+x.n+'</span>'+
+        '<div class="quote">'+x.q+'</div><div class="desc">'+x.d+'</div>'+
+        '<div class="sig"><b>识别信号：</b>'+x.s+'</div></div>';
+  });
+  document.getElementById('tricks').innerHTML=th;
+
+  var ch='';
+  T.counter.forEach(function(x,i){
+    ch+='<div class="cnt"><span class="no">'+(i+1)+'</span><span class="tx">'+x+'</span></div>';
+  });
+  document.getElementById('counters').innerHTML=ch;
+
+  var tp='';
+  T.tips.forEach(function(x,i){
+    tp+='<div class="tip"><div class="th"><span class="tt">'+x.t+'</span>'+
+        '<button class="cp" onclick="copyTip('+i+')">复制</button></div>'+
+        '<div class="say">'+x.s+'</div><div class="why">为什么有效：'+x.w+'</div></div>';
+  });
+  document.getElementById('tips').innerHTML=tp;
+
+  document.getElementById('rally').textContent=T.ally;
+  document.getElementById('rdanger').textContent=T.danger;
+  document.getElementById('rquote').innerHTML='「'+T.quote+'」<small>—— 写给'+T.name+'的一句话</small>';
+  go('s-result');
+}
+function dimWord(k,v){
+  var m={
+    power:['存在感偏弱，容易被跳过','交付稳定，够用','能扛事，值得托付','攻坚主力，也因此被加压','能力溢出，天花板握在别人手里'],
+    edge:['几乎不制造冲突，也不争取','温和克制，留有分寸','该说的会说，有底线','锋芒外露，容易树敌','火力全开，先开炮后瞄准'],
+    craft:['直线思维，容易吃暗亏','简单真诚，心思不多','有基本防护意识','懂留痕、懂布局、懂站队','人精级别，落子看三步'],
+    soft:['刀枪不入，也少了点人味','边界清晰，不好拿捏','有同理心，会被小事打动','共情强，容易被情感绑架','极度敏感，情绪劳动常年过载'],
+    calm:['情绪波动大，容易内耗','偶尔 emo，能自愈','总体稳定，偶有起伏','抗压能力强，扛得住','岿然不动，泰山崩于前']
+  }[k];
+  var i=v<2.5?0:(v<4.5?1:(v<6.5?2:(v<8.3?3:4)));
+  return m[i];
+}
+function drawRadar(sc){
+  var cx=125,cy=116,R=84,n=5,pts=[];
+  for(var i=0;i<n;i++){
+    var a=-Math.PI/2+i*2*Math.PI/n,v=sc[DIMS[i].k]/10;
+    pts.push([cx+Math.cos(a)*R*v,cy+Math.sin(a)*R*v]);
+  }
+  var g='';
+  [0.25,0.5,0.75,1].forEach(function(r){
+    var p=[];
+    for(var i=0;i<n;i++){var a=-Math.PI/2+i*2*Math.PI/n;p.push((cx+Math.cos(a)*R*r).toFixed(1)+','+(cy+Math.sin(a)*R*r).toFixed(1));}
+    g+='<polygon points="'+p.join(' ')+'" fill="'+(r===1?'#fdfaf1':'none')+'" stroke="#ecdfc0" stroke-width="1"/>';
+  });
+  for(var i=0;i<n;i++){
+    var a=-Math.PI/2+i*2*Math.PI/n;
+    g+='<line x1="'+cx+'" y1="'+cy+'" x2="'+(cx+Math.cos(a)*R).toFixed(1)+'" y2="'+(cy+Math.sin(a)*R).toFixed(1)+'" stroke="#f2e8cf"/>';
+  }
+  g+='<polygon points="'+pts.map(function(p){return p[0].toFixed(1)+','+p[1].toFixed(1);}).join(' ')+'" fill="rgba(184,58,46,.26)" stroke="#b83a2e" stroke-width="2.3" stroke-linejoin="round"/>';
+  pts.forEach(function(p){g+='<circle cx="'+p[0].toFixed(1)+'" cy="'+p[1].toFixed(1)+'" r="4.2" fill="#fff" stroke="#b83a2e" stroke-width="2.3"/>';});
+  for(var i=0;i<n;i++){
+    var a=-Math.PI/2+i*2*Math.PI/n;
+    var lx=cx+Math.cos(a)*(R+26),ly=cy+Math.sin(a)*(R+21);
+    g+='<text x="'+lx.toFixed(1)+'" y="'+(ly+4).toFixed(1)+'" text-anchor="middle" font-size="12.5" font-weight="800" fill="#6b543a">'+DIMS[i].n+'</text>';
+  }
+  document.getElementById('radar').innerHTML=g;
+}
+
+function showLib(){
+  var h='';
+  TYPES.forEach(function(t){
+    h+='<div class="lib-item"><div class="li">'+artIMG(t.key)+'</div><div>'+
+       '<div class="n">'+t.name+'</div>'+
+       '<div class="t">'+t.tag.split('·').slice(-1)[0].trim()+'</div>'+
+       '<div class="d">'+t.one+'</div></div></div>';
+  });
+  document.getElementById('liblist').innerHTML=h;
+  go('s-lib');
+}
+function backResult(){go('s-result');}
+
+function toast(m){var t=document.getElementById('toast');t.textContent=m;t.classList.add('show');setTimeout(function(){t.classList.remove('show');},2000);}
+function copyTip(i){
+  var s=result.t.tips[i].s;
+  if(navigator.clipboard&&navigator.clipboard.writeText){
+    navigator.clipboard.writeText(s).then(function(){toast('话术已复制');},function(){fb(s);});
+  }else fb(s);
+}
+function fb(txt){
+  var ta=document.createElement('textarea');ta.value=txt;ta.style.position='fixed';ta.style.opacity='0';
+  document.body.appendChild(ta);ta.select();
+  try{document.execCommand('copy');toast('已复制到剪贴板');}catch(e){toast('复制失败，请手动选择');}
+  document.body.removeChild(ta);
+}
+function buildText(){
+  var T=result.t;
+  var s='【职场人格图鉴】我是「'+T.name+'」\n'+T.tag+'\n\n'+T.one+'\n\n';
+  s+='· 成分：'+result.mix.map(function(x){return x.t.name+' '+x.pct.toFixed(0)+'%';}).join(' / ')+'\n\n';
+  s+='· 最容易拿捏我的驭人术：\n';
+  T.tricks.forEach(function(x,i){s+='  '+(i+1)+'. '+x.n+'：'+x.q+'\n';});
+  s+='\n· 反制手册：\n';
+  T.counter.forEach(function(x,i){s+='  '+(i+1)+'. '+x.replace(/<[^>]+>/g,'')+'\n';});
+  s+='\n· 锦囊话术：\n';
+  T.tips.forEach(function(x,i){s+='  '+(i+1)+'. ['+x.t+'] '+x.s+'\n';});
+  s+='\n「'+T.quote+'」\n\n—— 来测测你是孙悟空还是林黛玉';
+  return s;
+}
+function copyResult(){
+  var txt=buildText();
+  if(navigator.clipboard&&navigator.clipboard.writeText){
+    navigator.clipboard.writeText(txt).then(function(){toast('已复制，去粘贴给同事吧');},function(){fb(txt);});
+  }else fb(txt);
+}
+function saveCard(){
+  var T=result.t,cv=document.getElementById('cv'),ctx=cv.getContext('2d');
+  var W=750,H=1320;cv.width=W;cv.height=H;
+  var g=ctx.createLinearGradient(0,0,W,H);
+  g.addColorStop(0,'#6f1f12');g.addColorStop(.42,'#a92c1f');g.addColorStop(1,'#8c6d1f');
+  ctx.fillStyle=g;ctx.fillRect(0,0,W,H);
+  ctx.fillStyle='rgba(255,255,255,.10)';ctx.beginPath();ctx.arc(672,70,200,0,7);ctx.fill();
+
+  ctx.fillStyle='#fff';ctx.textAlign='center';
+  ctx.font='600 26px "PingFang SC",sans-serif';ctx.fillText('职 场 人 格 图 鉴',W/2,96);
+  ctx.font='900 82px "PingFang SC",sans-serif';ctx.fillText(T.name,W/2,214);
+  ctx.font='600 26px "PingFang SC",sans-serif';
+  wrap(ctx,T.tag.split('·').slice(-1)[0].trim(),W/2,262,620,38);
+
+  var cy0=318,ch=680;
+  ctx.fillStyle='rgba(255,255,255,.96)';roundRect(ctx,50,cy0,W-100,ch,28);ctx.fill();
+  ctx.fillStyle='#5c2a12';ctx.font='800 29px "PingFang SC",sans-serif';ctx.textAlign='left';
+  ctx.fillText('五 维 画 像',90,cy0+56);
+  var bx=90,by=cy0+90,bw=W-180;
+  DIMS.forEach(function(d,i){
+    var y=by+i*52,v=scores[d.k]/10;
+    ctx.fillStyle='#4a3a28';ctx.font='700 23px "PingFang SC",sans-serif';ctx.textAlign='left';
+    ctx.fillText(d.n,bx,y+22);
+    ctx.fillStyle='#f0e6cd';roundRect(ctx,bx+70,y+6,bw-140,18,9);ctx.fill();
+    var lg2=ctx.createLinearGradient(bx+70,0,bx+70+bw-140,0);
+    lg2.addColorStop(0,'#c14a33');lg2.addColorStop(1,'#c9a227');
+    ctx.fillStyle=lg2;roundRect(ctx,bx+70,y+6,Math.max(6,(bw-140)*v),18,9);ctx.fill();
+    ctx.fillStyle='#64748b';ctx.font='700 21px "PingFang SC",sans-serif';ctx.textAlign='right';
+    ctx.fillText(scores[d.k].toFixed(1),bx+bw,y+23);
+  });
+  var ty=by+5*52+34;
+  ctx.fillStyle='#0891b2';ctx.font='800 27px "PingFang SC",sans-serif';ctx.textAlign='left';
+  ctx.fillText('最容易拿捏我的驭人术',90,ty);
+  ctx.fillStyle='#334155';ctx.font='500 22px "PingFang SC",sans-serif';
+  T.tricks.slice(0,3).forEach(function(x,i){ctx.fillText((i+1)+'. '+x.n,90,ty+44+i*42);});
+  var ty2=ty+44+3*42+16;
+  ctx.fillStyle='#b45309';ctx.font='800 27px "PingFang SC",sans-serif';
+  ctx.fillText('锦囊话术',90,ty2);
+  ctx.fillStyle='#3f3416';ctx.font='500 20px "PingFang SC",sans-serif';
+  var yy=wrapL(ctx,'['+T.tips[0].t+'] '+T.tips[0].s,90,ty2+38,bw,32);
+  ctx.fillStyle='#a16207';ctx.font='500 18px "PingFang SC",sans-serif';
+  wrapL(ctx,'为什么有效：'+T.tips[0].w,90,yy+34,bw,28);
+
+  ctx.textAlign='center';ctx.fillStyle='#fff';
+  ctx.font='800 32px "PingFang SC",sans-serif';
+  wrap(ctx,'「'+T.quote+'」',W/2,1100,640,46);
+  ctx.font='500 21px "PingFang SC",sans-serif';ctx.fillStyle='rgba(255,255,255,.8)';
+  ctx.fillText('看清规则，是为了不被规则吞掉',W/2,1215);
+  try{
+    var url=cv.toDataURL('image/png');
+    var a=document.createElement('a');a.href=url;a.download='我的职场人格-'+T.name+'.png';
+    document.body.appendChild(a);a.click();document.body.removeChild(a);
+    toast('卡片已生成，请查看下载');
+  }catch(e){toast('生成失败，可改用复制文案');}
+}
+function wrap(ctx,text,x,y,maxW,lh){
+  var line='',yy=y;
+  for(var i=0;i<text.length;i++){
+    var t=line+text[i];
+    if(ctx.measureText(t).width>maxW&&line){ctx.fillText(line,x,yy);line=text[i];yy+=lh;}
+    else line=t;
+  }
+  if(line)ctx.fillText(line,x,yy);
+  return yy;
+}
+function wrapL(ctx,text,x,y,maxW,lh){
+  var line='',yy=y;
+  for(var i=0;i<text.length;i++){
+    var t=line+text[i];
+    if(ctx.measureText(t).width>maxW&&line){ctx.fillText(line,x,yy);line=text[i];yy+=lh;}
+    else line=t;
+  }
+  if(line)ctx.fillText(line,x,yy);
+  return yy;
+}
+function roundRect(ctx,x,y,w,h,r){
+  ctx.beginPath();ctx.moveTo(x+r,y);ctx.arcTo(x+w,y,x+w,y+h,r);ctx.arcTo(x+w,y+h,x,y+h,r);
+  ctx.arcTo(x,y+h,x,y,r);ctx.arcTo(x,y,x+w,y,r);ctx.closePath();
+}
+</script>
+
+<script>
+/* ===== 授权 / 试用模式补丁 ===== */
+(function(){
+  var DEMO = /[?&]demo=1/.test(location.search) && !ZY.isUnlocked();
+  var N = 3;
+
+  /* 已解锁：页脚加授权标识 */
+  if(ZY.isUnlocked()){
+    var f=document.querySelector('#s-intro .foot');
+    if(f) f.innerHTML='本测试仅供娱乐与自我觉察，不构成任何人事决策依据。<br>已授权 · 码尾号 '+
+      ((ZY.info()||{}).c||'----')+' · <a href="index.html" style="color:#a92c1f;text-decoration:none">返回首页</a>';
+    if(/[?&]ok=1/.test(location.search)){
+      var t=document.createElement('div');
+      t.style.cssText='position:fixed;left:50%;top:16px;transform:translateX(-50%);background:#059669;color:#fff;'+
+        'font-size:13px;font-weight:700;padding:9px 18px;border-radius:999px;z-index:300;box-shadow:0 6px 18px rgba(5,150,105,.4)';
+      t.textContent='解锁成功，24 题完整版已开放';
+      document.body.appendChild(t);
+      setTimeout(function(){t.style.transition='opacity .4s';t.style.opacity='0';},2400);
+      setTimeout(function(){t.remove();},2900);
+    }
+    return;
+  }
+  if(!DEMO) return;
+
+  /* ---- 试用版外观 ---- */
+  var kick=document.querySelector('.kick'); if(kick) kick.textContent='T R I A L · 抢先体验';
+  var btn=document.querySelector('#s-intro .hero .btn'); if(btn) btn.textContent='免费试玩 3 题';
+  var hint=document.querySelector('#s-intro .hero .hint');
+  if(hint) hint.innerHTML='先做 3 题看个大概 · 完整版 24 题 + 全部驭人术拆解';
+  var hero=document.querySelector('#s-intro .hero');
+  if(hero){
+    var bar=document.createElement('div');
+    bar.className='trialbar';
+    bar.innerHTML='试用版 · 仅开放前 3 题，完整结果需解锁';
+    hero.insertBefore(bar, hero.firstChild);
+  }
+
+  /* ---- 覆盖答题流程 ---- */
+  window.startQuiz=function(){ go('s-quiz'); cur=0; ans=[]; window.renderQ(); };
+  window.renderQ=function(){
+    var q=QS[cur];
+    document.getElementById('pnum').textContent=(cur+1)+' / '+N;
+    document.getElementById('pbar').style.width=((cur+1)/N*100)+'%';
+    document.getElementById('qtag').textContent=GROUPS[q.g]+' · 抢先体验';
+    document.getElementById('qwater').textContent=String(cur+1).padStart(2,'0');
+    document.getElementById('qtext').textContent=q.t;
+    document.getElementById('btnPrev').style.visibility=cur===0?'hidden':'visible';
+    var box=document.getElementById('opts'),h='',L=['A','B','C','D'];
+    q.o.forEach(function(o,i){
+      h+='<button class="opt'+(ans[cur]===i?' on':'')+'" onclick="pick('+i+')">'+
+         '<span class="k">'+L[i]+'</span><span>'+o.x+'</span></button>';
+    });
+    box.innerHTML=h;
+    var c=document.getElementById('qcard');
+    c.classList.remove('rise');void c.offsetWidth;c.classList.add('rise');
+  };
+  window.pick=function(i){
+    ans[cur]=i;
+    setTimeout(function(){
+      if(cur<N-1){cur++;window.renderQ();} else demoFinish();
+    },190);
+  };
+
+  function demoFinish(){
+    go('s-load');
+    document.getElementById('loadtx').textContent='比对 9 种人格原型…';
+    setTimeout(function(){
+      var k=ans.length/QS.length;
+      var raw={};DIMS.forEach(function(d){raw[d.k]=0;});
+      for(var i=0;i<ans.length;i++){var d=QS[i].o[ans[i]].d||{};for(var q in d)raw[q]=(raw[q]||0)+d[q];}
+      var norm={};
+      DIMS.forEach(function(d){
+        var m=MEAN[d.k]*k, s=SD[d.k]*Math.sqrt(k);
+        norm[d.k]=Math.max(0.4,Math.min(9.6,5+(raw[d.k]-m)/s*SCALE));
+      });
+      var pool=TYPES.filter(function(t){return t.key!=='liuer';});
+      var list=pool.map(function(t){
+        var s=0;DIMS.forEach(function(d){var df=norm[d.k]-t.vec[d.k];s+=df*df;});
+        return {t:t,dist:Math.sqrt(s)};
+      }).sort(function(a,b){return a.dist-b.dist;});
+      var w=list.map(function(x){return 1/Math.pow(x.dist+0.55,3.2);});
+      var sum=w.reduce(function(a,b){return a+b;},0);
+      list.forEach(function(x,i){x.pct=w[i]/sum*100;});
+      showWall(list[0],list[1]);
+    },1500);
+  }
+
+  function showWall(top,second){
+    var T=top.t;
+    var conf=Math.max(41,Math.min(76,Math.round(34+top.pct*0.52)));
+    var rows=[
+      ['深度解析','4 段长文：你被如何使用 / 代价 / 下一步补什么'],
+      ['驭人术 '+T.tricks.length+' 式','已知第 1 式「'+T.tricks[0].n+'」，其余待解锁'],
+      ['反制手册 '+T.counter.length+' 条','针对每一式的可执行动作'],
+      ['锦囊话术 '+T.tips.length+' 句','能直接复制粘贴用，含有效性拆解']
+    ];
+    var wall=document.createElement('div');
+    wall.className='zywall';wall.id='zywall';
+    wall.innerHTML=
+      '<div class="zybox">'+
+        '<div class="zyclose" onclick="document.getElementById(\'zywall\').remove()">×</div>'+
+        '<div class="zyava">'+artIMG(T.key)+'</div>'+
+        '<div class="zytag">你的初步画像</div>'+
+        '<div class="zyname">'+T.name+'</div>'+
+        '<div class="zyone">'+T.one+'</div>'+
+        '<div class="zyconf">置信度约 '+conf+'% · 仅凭 '+ans.length+' 题，完整版 24 题更准</div>'+
+        '<div class="zylist">'+rows.map(function(r){
+          return '<div class="zyrow"><b>'+r[0]+'</b><span>'+r[1]+'</span><i>未解锁</i></div>';
+        }).join('')+'</div>'+
+        '<input class="zycode" id="zycode" placeholder="ZY-XXXX-XXXX" maxlength="13" autocomplete="off" autocapitalize="characters">'+
+        '<button class="zybtn" id="zygo">输入授权码，立即解锁</button>'+
+        '<button class="zybtn2" onclick="location.href=\'index.html#unlock\'">还没有码？去看看</button>'+
+        '<div class="zymsg" id="zymsg"></div>'+
+        '<div class="zysmall">第二可能：'+second.t.name+'型 · 解锁后可用完整 24 题重测<br>解锁状态存于本机，换设备用同一个码再输一次即可</div>'+
+      '</div>';
+    document.body.appendChild(wall);
+    var ci=wall.querySelector('#zycode');
+    ci.addEventListener('input',function(){
+      var v=this.value.toUpperCase().replace(/[^A-Z0-9]/g,'');if(/^ZY/.test(v))v=v.slice(2);v=v.slice(0,8),o='';
+      for(var i=0;i<v.length;i++){if(i===4)o+='-';o+=v[i];}
+      this.value=o;
+      if(v.length===8) zyUnlock();
+    });
+    wall.querySelector('#zygo').addEventListener('click',zyUnlock);
+    setTimeout(function(){ci.focus()},420);
+
+    function zyUnlock(){
+      var v=ci.value;
+      if(v.replace(/[^A-Z0-9]/g,'').length<8){ zymsg('请先填写完整授权码','err'); return; }
+      var b=wall.querySelector('#zygo'); b.disabled=true; b.textContent='校验中…';
+      ZY.unlock(v).then(function(r){
+        b.disabled=false; b.textContent='输入授权码，立即解锁';
+        if(r.ok){ zymsg('校验通过，正在进入完整版…','ok'); setTimeout(function(){location.href='app.html?ok=1';},520); }
+        else { zymsg(r.msg,'err'); ci.select(); }
+      });
+    }
+    function zymsg(t,c){ var m=wall.querySelector('#zymsg'); m.textContent=t; m.className='zymsg '+(c||''); }
+  }
+})();
+</script>
+</body>
+</html>

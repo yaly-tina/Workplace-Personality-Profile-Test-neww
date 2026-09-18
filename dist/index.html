@@ -1,0 +1,324 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>职场人格图鉴 · 测出谁在拿捏你</title>
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Cdefs%3E%3ClinearGradient id='g' x1='0' y1='0' x2='1' y2='1'%3E%3Cstop offset='0' stop-color='%23b83a2e'/%3E%3Cstop offset='1' stop-color='%23c9a227'/%3E%3C/linearGradient%3E%3C/defs%3E%3Crect width='64' height='64' rx='16' fill='url(%23g)'/%3E%3Ccircle cx='22' cy='26' r='5' fill='white'/%3E%3Ccircle cx='42' cy='26' r='5' fill='white'/%3E%3Cpath d='M20 42q12 10 24 0' stroke='white' stroke-width='4' fill='none' stroke-linecap='round'/%3E%3C/svg%3E">
+<meta name="description" content="24 道题测出你的职场人格原型（孙悟空/林黛玉/王熙凤/诸葛亮…），附赠你专属的驭人术拆解、反制手册与锦囊话术。">
+<style>
+*{box-sizing:border-box;-webkit-tap-highlight-color:transparent}
+html,body{margin:0;padding:0}
+:root{
+  --c1:#b83a2e;--c2:#c9a227;--c3:#d9543f;--c4:#8c6d1f;--c5:#e07b54;
+  --ink:#3b2a1c;--sub:#8a7660;--line:#eadfc8;
+  --serif:Georgia,"Noto Serif SC","Songti SC","STSong","SimSun",serif;
+}
+body{
+  font-family:"PingFang SC","Microsoft YaHei","Hiragino Sans GB",system-ui,-apple-system,sans-serif;
+  color:var(--ink);
+  background:#f5eedd;
+  background-image:
+    radial-gradient(1150px 560px at 8% -8%,#fdf8ec 0%,transparent 60%),
+    radial-gradient(950px 540px at 108% 6%,#f2e4c6 0%,transparent 55%),
+    radial-gradient(900px 620px at 50% 118%,#eedebf 0%,transparent 60%),
+    repeating-linear-gradient(45deg,rgba(166,124,52,.016) 0 2px,transparent 2px 9px);
+  min-height:100vh;overflow-x:hidden;
+}
+.wrap{max-width:690px;margin:0 auto;padding:22px 15px 70px}
+.card{background:rgba(255,253,247,.93);border:1px solid #f0e5cd;border-radius:22px;
+  box-shadow:0 14px 40px rgba(122,86,34,.13);backdrop-filter:blur(10px);padding:22px;margin-bottom:16px}
+.grad{background:linear-gradient(100deg,#b83a2e,#c9a227);font-family:var(--serif);-webkit-background-clip:text;background-clip:text;color:transparent}
+
+/* hero */
+.hero{text-align:center;padding:34px 20px 26px;margin-bottom:16px;position:relative;overflow:hidden}
+.hero:before{content:"";position:absolute;inset:-40% -10% auto;height:240px;
+  background:radial-gradient(closest-side,rgba(201,162,39,.22),transparent 70%);filter:blur(6px)}
+.badge{display:inline-block;font-size:12px;font-weight:700;letter-spacing:1px;color:#b45309;
+  background:linear-gradient(100deg,#fef3c7,#fde68a);border:1px solid #fcd34d;border-radius:999px;
+  padding:6px 14px;margin-bottom:16px}
+h1{font-size:33px;line-height:1.28;margin:0 0 12px;letter-spacing:-.5px}
+h1 .sm{display:block;font-size:19px;font-weight:800;margin-top:7px;letter-spacing:0}
+.lead{font-size:14.5px;color:var(--sub);line-height:1.85;margin:0 auto 20px;max-width:480px}
+.chips{display:flex;flex-wrap:wrap;gap:7px;justify-content:center;margin:0 0 22px}
+.chip{font-size:12px;font-weight:700;padding:5px 11px;border-radius:999px;color:#334155;
+  background:rgba(255,255,255,.9);border:1px solid var(--line)}
+
+.btn{display:block;width:100%;border:0;border-radius:15px;padding:15px 18px;font-size:16px;font-weight:800;
+  font-family:inherit;cursor:pointer;transition:transform .16s,box-shadow .16s}
+.btn:active{transform:scale(.985)}
+.btn-p{background:linear-gradient(100deg,#c14a33,#a92c1f);color:#fff;box-shadow:0 10px 26px rgba(169,44,31,.36)}
+.btn-p:hover{box-shadow:0 14px 32px rgba(169,44,31,.46)}
+.btn-s{background:#fffdf6;color:#a92c1f;border:1.5px solid #e6d3ae;margin-top:10px}
+.btn-row{display:flex;gap:10px;margin-top:12px}
+.btn-row .btn{margin-top:0}
+.hint{font-size:12px;color:var(--sub);margin-top:12px;line-height:1.7}
+
+/* section */
+h2{font-size:19px;margin:0 0 4px;letter-spacing:-.2px}
+.sub{font-size:13px;color:var(--sub);margin:0 0 18px}
+.grid{display:grid;grid-template-columns:1fr 1fr;gap:11px}
+.item{background:rgba(255,255,255,.72);border:1px solid var(--line);border-radius:15px;padding:14px}
+.item b{display:block;font-size:14px;margin-bottom:5px}
+.item span{font-size:12.3px;color:var(--sub);line-height:1.75}
+.num{display:inline-flex;align-items:center;justify-content:center;width:22px;height:22px;border-radius:8px;
+  background:linear-gradient(135deg,#c14a33,#8c6d1f);color:#fff;font-size:12px;font-weight:800;margin-bottom:8px}
+
+.types{display:grid;grid-template-columns:repeat(3,1fr);gap:9px}
+.t{border-radius:14px;padding:12px 8px;text-align:center;border:1px solid var(--line);background:#fffdf7}
+.t img{width:74px;height:74px;border-radius:14px;object-fit:cover;display:block;margin:0 auto 7px;border:2.5px solid #fff;box-shadow:0 6px 16px -6px rgba(122,86,34,.4)}
+.t b{display:block;font-size:14px;font-weight:800}
+.t span{font-size:11px;color:var(--sub);line-height:1.5;display:block;margin-top:3px}
+.t:nth-child(3n+1) b{color:#a92c1f}.t:nth-child(3n+2) b{color:#8c6d1f}.t:nth-child(3n) b{color:#b45309}
+.t b{font-family:var(--serif);letter-spacing:1px}
+
+/* 解锁 */
+.codebox{display:flex;gap:9px;margin-top:6px}
+input.code{flex:1;min-width:0;font-family:ui-monospace,"SFMono-Regular",Consolas,monospace;font-size:17px;font-weight:800;
+  letter-spacing:2.4px;text-align:center;text-transform:uppercase;padding:14px 8px;border-radius:14px;
+  border:1.5px solid #cfe0f2;background:#fff;color:var(--ink);outline:none;transition:border-color .2s,box-shadow .2s}
+input.code:focus{border-color:#c14a33;box-shadow:0 0 0 4px rgba(193,74,51,.14)}
+input.code::placeholder{letter-spacing:1px;color:#a9bccf;font-weight:600}
+.btn-u{border:0;border-radius:14px;padding:14px 20px;font-size:15px;font-weight:800;font-family:inherit;cursor:pointer;
+  background:linear-gradient(100deg,#c14a33,#a92c1f);color:#fff;white-space:nowrap;transition:opacity .2s}
+.btn-u:disabled{opacity:.55}
+.msg{font-size:13px;margin-top:11px;min-height:19px;text-align:center;font-weight:600}
+.msg.ok{color:#059669}.msg.err{color:#e11d48}
+
+/* 价格 */
+.price{text-align:center;padding:26px 20px;position:relative;overflow:hidden}
+.price:before{content:"";position:absolute;left:50%;top:-60px;width:300px;height:300px;transform:translateX(-50%);
+  background:radial-gradient(closest-side,rgba(184,58,46,.14),transparent 70%)}
+.pnum{font-size:46px;font-weight:900;letter-spacing:-1.5px}
+.pnum i{font-size:20px;font-style:normal;font-weight:800;margin-right:3px}
+.pold{font-size:14px;color:#94a3b8;text-decoration:line-through;margin-left:8px;font-weight:600}
+.ptag{font-size:13px;color:var(--sub);margin:6px 0 18px}
+.promise{display:flex;gap:8px;justify-content:center;flex-wrap:wrap;margin-top:16px}
+.promise span{font-size:11.5px;color:#475569;background:rgba(241,245,249,.9);border-radius:999px;padding:5px 11px;font-weight:600}
+
+.locked{display:none;text-align:center;background:linear-gradient(100deg,#faf4e2,#f6ecd4);
+  border:1px solid #e6d4a4;border-radius:16px;padding:16px;margin-bottom:16px}
+.locked b{display:block;font-size:15px;color:#7a5c16;margin-bottom:4px}
+.locked span{font-size:12.5px;color:#9a6b1d}
+
+.faq details{border-bottom:1px solid var(--line);padding:13px 0}
+.faq details:last-child{border-bottom:0}
+.faq summary{font-size:14.5px;font-weight:700;cursor:pointer;list-style:none;display:flex;justify-content:space-between;align-items:center}
+.faq summary::-webkit-details-marker{display:none}
+.faq summary:after{content:"+";font-size:19px;color:#94a3b8;font-weight:400}
+.faq details[open] summary:after{content:"–"}
+.faq p{font-size:13px;color:var(--sub);line-height:1.85;margin:9px 0 0}
+.foot{text-align:center;font-size:11.5px;color:#94a3b8;line-height:1.9;padding:6px 10px}
+.foot a{color:#a92c1f;text-decoration:none}
+.toast{position:fixed;left:50%;bottom:34px;transform:translate(-50%,20px);background:rgba(15,23,42,.94);color:#fff;
+  font-size:13px;font-weight:600;padding:11px 20px;border-radius:999px;opacity:0;pointer-events:none;
+  transition:opacity .25s,transform .25s;z-index:99}
+.toast.on{opacity:1;transform:translate(-50%,0)}
+@media(max-width:400px){h1{font-size:29px}.grid{grid-template-columns:1fr}.types{grid-template-columns:repeat(2,1fr)}}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <!-- 已解锁提示 -->
+  <div class="locked" id="unlockedBar">
+    <b>本机已解锁</b>
+    <span>授权尾号 <b id="fpTail"></b> · 换设备时用同一个码再输一次即可</span>
+    <button class="btn btn-s" style="margin-top:12px" onclick="enter()">进入完整版</button>
+  </div>
+
+  <!-- HERO -->
+  <div class="card hero">
+    <div class="badge" id="badge">限时首发 · 一杯咖啡的价格</div>
+    <h1>职场人格图鉴<span class="sm grad">测出「谁在拿捏你」</span></h1>
+    <p class="lead">24 道情境题，拆出你的职场原型：孙悟空 / 林黛玉 / 王熙凤 / 诸葛亮 / 沙僧……<br>
+      每一型都附一份<b>驭人术拆解</b>——别人正在用哪一招使唤你、怎么识别、怎么挡回去。</p>
+    <div class="chips">
+      <span class="chip">24 道情境题</span><span class="chip">9 型人格</span>
+      <span class="chip">36 式驭人术</span><span class="chip">反制手册</span>
+      <span class="chip">27 句锦囊话术</span><span class="chip">可分享卡片</span>
+    </div>
+    <button class="btn btn-p" onclick="buy()">立即解锁 · <span id="priceBtn"></span></button>
+    <button class="btn btn-s" onclick="tryFree()">先免费试玩 3 题</button>
+    <div class="hint">已有授权码？往下翻直接输入即可解锁</div>
+  </div>
+
+  <!-- 得到什么 -->
+  <div class="card">
+    <h2>解锁后你能拿到什么</h2>
+    <p class="sub">不是性格标签，是一份「被使用时」的自检说明书</p>
+    <div class="grid">
+      <div class="item"><span class="num">1</span><b>24 题 · 6 组场景</b><span>接活时刻、功劳与锅、向上管理、同级博弈、情绪暗流、自我底牌</span></div>
+      <div class="item"><span class="num">2</span><b>五维能力画像</b><span>实力 / 锋芒 / 权术 / 柔软 / 定力，雷达图直出</span></div>
+      <div class="item"><span class="num">3</span><b>4 式驭人术拆解</b><span>每式含「领导原话 + 识别信号」，照着对照自己的处境</span></div>
+      <div class="item"><span class="num">4</span><b>5 条反制手册</b><span>不是「学会拒绝」这种废话，是可执行动作</span></div>
+      <div class="item"><span class="num">5</span><b>3 句锦囊话术</b><span>能直接复制粘贴用，附「为什么有效」的拆解</span></div>
+      <div class="item"><span class="num">6</span><b>相生相克 + 图鉴</b><span>你和谁搭、谁克你，九型速查给同事对号入座</span></div>
+    </div>
+  </div>
+
+  <!-- 九型 -->
+  <div class="card">
+    <h2>九型人格，你会是哪一型</h2>
+    <p class="sub">西游 × 红楼混搭，外加一个隐藏款</p>
+    <div class="types">
+      <div class="t"><img src="assets/wukong.jpg" alt=""><b>孙悟空</b><span>能力超强<br>最容易被白嫖</span></div>
+      <div class="t"><img src="assets/daiyu.jpg" alt=""><b>林黛玉</b><span>敏感细腻<br>情绪被当筹码</span></div>
+      <div class="t"><img src="assets/baochai.jpg" alt=""><b>薛宝钗</b><span>滴水不漏<br>稳但不出头</span></div>
+      <div class="t"><img src="assets/xifeng.jpg" alt=""><b>王熙凤</b><span>操盘型选手<br>能干且会算</span></div>
+      <div class="t"><img src="assets/bajie.jpg" alt=""><b>猪八戒</b><span>人缘好<br>容易背虚名</span></div>
+      <div class="t"><img src="assets/shaseng.jpg" alt=""><b>沙僧</b><span>老实执行者<br>活多人不显</span></div>
+      <div class="t"><img src="assets/tangseng.jpg" alt=""><b>唐僧</b><span>理想主义<br>最容易被画饼</span></div>
+      <div class="t"><img src="assets/zhugeliang.jpg" alt=""><b>诸葛亮</b><span>谋略型<br>操心到失眠</span></div>
+      <div class="t"><img src="assets/liuer.jpg" alt=""><b>六耳猕猴</b><span>隐藏款<br>五色均衡才出</span></div>
+    </div>
+  </div>
+
+  <!-- 解锁 -->
+  <div class="card" id="unlockCard">
+    <h2>输入授权码解锁</h2>
+    <p class="sub">格式 ZY-XXXX-XXXX · 不区分大小写，ZY 前缀和横杠都可以省略</p>
+    <div class="codebox">
+      <input class="code" id="codeInput" placeholder="ZY-XXXX-XXXX" maxlength="13" autocomplete="off" autocapitalize="characters" spellcheck="false">
+      <button class="btn-u" id="btnUnlock" onclick="doUnlock()">解锁</button>
+    </div>
+    <div class="msg" id="msg"></div>
+    <div class="hint" style="text-align:center">一个码支持本人多台设备<br>把码发给别人 = 你自己也用不了多久了，请珍惜</div>
+  </div>
+
+  <!-- 价格 -->
+  <div class="card price">
+    <div class="pnum"><i id="cur1"></i><span id="priceNum"></span><span class="pold" id="oldPrice"></span></div>
+    <div class="ptag" id="priceTag">一次买断，永久可用 · 后续更新免费</div>
+    <button class="btn btn-p" onclick="buy()">立即购买 · 秒发授权码</button>
+    <button class="btn btn-s" onclick="tryFree()">先试玩 3 题再决定</button>
+    <div class="promise">
+      <span>自动发货</span><span>永久有效</span><span>手机电脑都能用</span><span>支持退款</span>
+    </div>
+  </div>
+
+  <!-- FAQ -->
+  <div class="card faq">
+    <h2>常见问题</h2>
+    <p class="sub">购买前先看这里</p>
+    <details open><summary>授权码怎么用？</summary><p>付款后自动收到一串 ZY-XXXX-XXXX 格式的码，回到本页面输入即可解锁。解锁状态存在你本机浏览器里，下次打开不用再输。</p></details>
+    <details><summary>换手机 / 换电脑还能用吗？</summary><p>可以。同一个码在新设备上再输一次即可，支持本人多台设备。</p></details>
+    <details><summary>和网上免费的性格测试有什么区别？</summary><p>那些测的是「你是什么样的人」，这个测的是「别人会怎么使用你」。重点在驭人术拆解、识别信号和反制动作，能直接用在明天的会上。</p></details>
+    <details><summary>会泄露我的答案吗？</summary><p>不会。全部计算在你的浏览器本地完成，答案不上传、不存储、不需要登录。</p></details>
+    <details><summary>没收到码 / 码用不了怎么办？</summary><p>点下方联系卖家，把付款截图发过去，一般几分钟内补发。</p></details>
+  </div>
+
+  <div class="foot">
+    <span id="footText"></span><br>
+    <a href="javascript:contact()">联系卖家</a> · <a href="javascript:clearAuth()">清除本机授权</a><br>
+    本产品为娱乐向自我觉察工具，不构成职业或法律建议
+  </div>
+</div>
+
+<div class="toast" id="toast"></div>
+
+<script src="hashes.js"></script>
+<script src="guard.js"></script>
+<script>
+/* ========== 卖家配置：改这里 ========== */
+var CONFIG = {
+  name      : '职场人格图鉴',
+  price     : '9.9',      // 售价
+  oldPrice  : '29',       // 划线原价
+  buyLink   : '',         // 你的购买链接（闲鱼/微店/小红书店铺/收款码图），留空则点购买时提示联系卖家
+  wechat    : '',         // 客服微信/联系方式，留空则「联系卖家」复制页面链接
+  tip       : '一杯咖啡的钱，换一份不会被白嫖的自觉'
+};
+/* ==================================== */
+
+var APP = 'app.html';
+function $(id){return document.getElementById(id)}
+
+/* 渲染配置 */
+$('priceBtn').textContent = '¥' + CONFIG.price;
+$('priceNum').textContent = CONFIG.price;
+$('cur1').textContent = '¥';
+$('oldPrice').textContent = '¥' + CONFIG.oldPrice;
+$('badge').textContent = '限时首发 · ¥' + CONFIG.price;
+$('footText').textContent = CONFIG.tip;
+
+function buy(){
+  if(CONFIG.buyLink && CONFIG.buyLink !== ''){ location.href = CONFIG.buyLink; }
+  else { contact(); toast('请添加卖家联系方式购买，付款后秒发授权码'); }
+}
+function tryFree(){ location.href = APP + '?demo=1'; }
+function enter(){ location.href = APP; }
+function contact(){
+  if(CONFIG.wechat){
+    copy(CONFIG.wechat);
+    toast('已复制联系方式：' + CONFIG.wechat);
+  }else{
+    copy(location.href.split('#')[0]);
+    toast('已复制页面链接，发给朋友一起测');
+  }
+}
+function copy(t){
+  if(navigator.clipboard && navigator.clipboard.writeText){ navigator.clipboard.writeText(t); return; }
+  var ta=document.createElement('textarea');ta.value=t;document.body.appendChild(ta);ta.select();
+  try{document.execCommand('copy')}catch(e){} document.body.removeChild(ta);
+}
+function clearAuth(){
+  if(confirm('清除本机的解锁记录？清除后需要重新输入授权码。')){
+    ZY.reset(); location.reload();
+  }
+}
+var _t;
+function toast(s){
+  var el=$('toast'); el.textContent=s; el.classList.add('on');
+  clearTimeout(_t); _t=setTimeout(function(){el.classList.remove('on')},2000);
+}
+
+/* 授权码输入格式化 */
+var ci=$('codeInput');
+ci.addEventListener('input', function(){
+  var v = this.value.toUpperCase().replace(/[^A-Z0-9]/g,'');
+  if(/^ZY/.test(v)) v = v.slice(2);
+  v = v.slice(0,8);
+  var out='';
+  for(var i=0;i<v.length;i++){ if(i===4) out+='-'; out+=v[i]; }
+  this.value = out;
+  // 输满自动校验
+  if(v.length===8) doUnlock();
+});
+ci.addEventListener('keydown', function(e){ if(e.key==='Enter') doUnlock(); });
+
+function doUnlock(){
+  var raw = ci.value;
+  if(!raw || raw.replace(/[^A-Z0-9]/g,'').length < 8){
+    msg('请先填写完整的授权码', 'err'); return;
+  }
+  var btn=$('btnUnlock'); btn.disabled=true; btn.textContent='校验中';
+  msg('正在校验…','');
+  ZY.unlock(raw).then(function(r){
+    btn.disabled=false; btn.textContent='解锁';
+    if(r.ok){
+      msg('校验通过，正在进入…','ok');
+      setTimeout(function(){ location.href = APP + '?ok=1'; }, 480);
+    }else{
+      msg(r.msg,'err');
+      var box=ci.parentNode; box.animate(
+        [{transform:'translateX(0)'},{transform:'translateX(-7px)'},{transform:'translateX(7px)'},{transform:'translateX(0)'}],
+        {duration:280});
+      ci.select();
+    }
+  });
+}
+function msg(t,cls){ var m=$('msg'); m.textContent=t; m.className='msg '+(cls||''); }
+
+/* 已解锁状态 */
+(function(){
+  if(ZY.isUnlocked()){
+    var info=ZY.info()||{};
+    $('unlockedBar').style.display='block';
+    $('fpTail').textContent = info.c || '----';
+    $('unlockCard').style.display='none';
+  }
+})();
+</script>
+</body>
+</html>
